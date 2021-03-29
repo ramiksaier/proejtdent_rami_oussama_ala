@@ -2,8 +2,14 @@ const mongoose = require("mongoose");
 
 const schema = mongoose.Schema;
 const docteurSchema = new schema({
- 
-  supplier: {
+ status : {
+   type : Boolean,
+   default :false
+ },
+ images : {
+   type : Array
+ },
+  userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
