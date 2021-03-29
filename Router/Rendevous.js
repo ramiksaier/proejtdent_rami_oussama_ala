@@ -1,33 +1,33 @@
 //import
 const express = require("express");
 const router = express.Router();
-const Docteur = require("../Model/Docteur");
-const controleur = require("../Controlles/Docteur");
-  //docteur router
+const Rendezvous = require("../Model/Rendevous");
+const controleur = require("../Controlles/Rendezvous");
+//docteur router
 //@POST methode
 //@DESC ADD CONTACT
 //PATH:http://l ocalhost/api/contact/
 //PARAMS : req.body
 //access: public /private
-router.post("/", controleur.adddocteur);
+router.post("/", controleur.adddrendezvous);
 //@methode GET
 //@DESC GET all CONTACTS
 //PATH:http://localhost/api/contact/
-router.get("/", controleur.affichedocteur);
+router.get("/", controleur.afficherendezvous);
 //@methode GET
 //@DESC GET one CONTACT
 //PATH:http://localhost/api/contact/
 //@params req.params._id
-router.get("/:_id", controleur.afficheOnedocteur);
+router.get("/:_id", controleur.afficheOnerendezvous);
 //@methode DELETE
 //@DESC DELETE one CONTACT
 //PATH:http://localhost/api/contact/
 //@params _id
-router.delete("/:_id", controleur.Deletedocteur);
+router.delete("/:_id", controleur.Deleterendezvous);
 //@methode put
 //@DESC update CONTACT by id
 //PATH:http://localhost/api/contact/
 //@params _id body
-router.put("/:_id", controleur.updatedocteur);
+router.put("/:_id", controleur.updaterendezvous);
 //export
 module.exports = router;
