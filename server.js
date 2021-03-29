@@ -8,7 +8,7 @@ connectDB();
 //midelwaire global
 app.use(express.json());
 //midellware rout
-app.use("/api/user", require("./Router/User"));
+app.use("/api/user", require("./Router/user"));
 app.use("/api/patient", require("./Router/Patient"));
 app.use("/api/docteur", require("./Router/Docteur"));
 
