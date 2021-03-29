@@ -1,13 +1,12 @@
 const adddocteur = async (req, res) => {
   try {
     if (
-      !req.body.firstName ||
-      !req.body.lastName ||
+      
       !req.body.qualification ||
       !req.body.Phone ||
       !req.body.localisation ||
-      !req.body.emplacementEducation ||
-      !req.body.role
+      !req.body.emplacementEducation
+      
     ) {
       res.send("last and first name are required checked again please");
       return;

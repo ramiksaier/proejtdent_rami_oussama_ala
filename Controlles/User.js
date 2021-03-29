@@ -2,9 +2,10 @@ const User=require('../Model/User')
 ////POST User
 exports.postUser=async(req,res)=>{
     try{
-        const {email,password}=req.body
+        const {email,password,firstName,lastName}=req.body
         //handling errors:email et password required
-        if (!email||!password){
+        if (!email||!password ||!firstName ||
+            !lastName ){
             res.status(400).send({msg:'Email et Password are required!!!'})
             return
         }
