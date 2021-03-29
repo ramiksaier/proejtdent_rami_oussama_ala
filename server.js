@@ -11,6 +11,7 @@ app.use(express.json());
 app.use("/api/user", require("./Router/user"));
 app.use("/api/patient", require("./Router/Patient"));
 app.use("/api/docteur", require("./Router/Docteur"));
+app.use("/api/rendezvous", require("./Router/Rendevous"));
 
 //connect to server
 const PORT = process.env.PORT;
