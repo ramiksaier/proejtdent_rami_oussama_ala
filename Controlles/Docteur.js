@@ -1,12 +1,10 @@
 const adddocteur = async (req, res) => {
   try {
     if (
-      
       !req.body.qualification ||
       !req.body.Phone ||
       !req.body.localisation ||
       !req.body.emplacementEducation
-      
     ) {
       res.send("last and first name are required checked again please");
       return;
@@ -71,6 +69,7 @@ updatedocteur = async (req, res) => {
     res.status(400).send("can not find the docteur you looking for");
   }
 };
+
 //export methode
 module.exports = controller = {
   adddocteur,

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const schema = mongoose.Schema;
 const docteurSchema = new schema({
   status: {

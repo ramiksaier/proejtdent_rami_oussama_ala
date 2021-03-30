@@ -4,7 +4,7 @@ exports.postUser = async (req, res) => {
   try {
     const { email, password, firstName, lastName, role } = req.body;
     //handling errors:email et password required
-    if (!email || !password || !firstName || !lastName) {
+    if (!email || !password || !firstName || !lastName || !role) {
       res.status(400).send({ msg: "Email et Password are required!!!" });
       return;
     }
