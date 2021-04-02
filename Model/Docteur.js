@@ -1,6 +1,8 @@
+const { Schema } = require("mongoose");
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 const docteurSchema = new schema({
+ 
   status: {
     type: Boolean,
     default: false,

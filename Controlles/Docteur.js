@@ -9,16 +9,13 @@ const adddocteur = async (req, res) => {
       res.send("last and first name are required checked again please");
       return;
     }
-
     const newDocteur = new Docteur({ ...req.body });
     const doct = await Docteur.findOne({ Phone: req.body.Phone });
     if (doct) {
       res.send("docteur already exist");
       return;
     }
-
     const response = await newDocteur.save();
-
     res
       .status(200)
       .send({ response: response, message: "docteur added sucufully" });

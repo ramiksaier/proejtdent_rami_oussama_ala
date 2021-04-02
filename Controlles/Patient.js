@@ -1,4 +1,3 @@
-const { restart } = require("nodemon");
 
 const addPatient = async (req, res) => {
     try {
@@ -9,7 +8,8 @@ const addPatient = async (req, res) => {
       }
       const newPatient = new Patient({ ...req.body });
       const Pat = await Patient.findOne ({phone : req.body.phone})
-      if (Pat) {res.send ("patient exist")}
+      if (Pat) 
+      {res.send ("patient exist")}
       const response = await newPatient.save();
       res
         .status(200)
