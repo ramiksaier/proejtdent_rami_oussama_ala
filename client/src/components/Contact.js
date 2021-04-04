@@ -6,7 +6,7 @@ const initialState = {
   email: '',
   message: '',
 }
-export const Contact = (props) => {
+ const Contact = (props) => {
   const [{ name, email, message }, setState] = useState(initialState)
 
   const handleChange = (e) => {
@@ -102,7 +102,7 @@ export const Contact = (props) => {
                 <span>
                   <i className='fa fa-map-marker'></i> Address
                 </span>
-                {props.data ? props.data.address : 'loading'}
+                Nabeul 8044 / tunisia
               </p>
             </div>
             <div className='contact-item'>
@@ -110,7 +110,11 @@ export const Contact = (props) => {
                 <span>
                   <i className='fa fa-phone'></i> Phone
                 </span>{' '}
-                {props.data ? props.data.phone : 'loading'}
+                (+216) 25.208.928 <br/>
+                (+216) 28.493.136 <br/>
+                (+216) 27.504.668
+
+
               </p>
             </div>
             <div className='contact-item'>
@@ -118,7 +122,7 @@ export const Contact = (props) => {
                 <span>
                   <i className='fa fa-envelope-o'></i> Email
                 </span>{' '}
-                {props.data ? props.data.email : 'loading'}
+                ramos.ksaier@gmail.com
               </p>
             </div>
           </div>
@@ -150,9 +154,9 @@ export const Contact = (props) => {
       <div id='footer'>
         <div className='container text-center'>
           <p>
-            &copy; 2020 Issaaf Kattan React Land Page Template. Design by{' '}
-            <a href='http://www.templatewire.com' rel='nofollow'>
-              TemplateWire
+            &copy; 2021 det.tn  Design by{' '}
+            <a href='rami ksaier' rel='nofollow'>
+              rami ksaier
             </a>
           </p>
         </div>
@@ -160,3 +164,4 @@ export const Contact = (props) => {
     </div>
   )
 }
+export default Contact
