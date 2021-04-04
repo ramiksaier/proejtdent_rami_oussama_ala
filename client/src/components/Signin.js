@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Features = () => {
+const Signin = () => {
   return (
     <div id="features" className="text-center">
       <div className="container">
@@ -28,4 +28,4 @@ const Features = () => {
     </div>
   );
 };
-export default Features;
+export default Signin;

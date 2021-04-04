@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navigation from "./Nav";
 import Header from "./Head";
-import Features from "./Features";
+import Features from "./Signin";
 import About from "./About";
 import Services from "./Services";
 import Gallery from "./Gallery";
