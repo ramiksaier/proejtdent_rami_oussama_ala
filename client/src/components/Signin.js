@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { role_docteur, role_patient } from "../REduxJS/ACTION/Role";
 
 const Signin = () => {
+  const dispatch = useDispatch();
+
   return (
     <div id="features" className="text-center">
       <div className="container">
@@ -12,13 +16,21 @@ const Signin = () => {
           </div>
           <div className="btn">
             <Link to="/connectpatient">
-              <button variant="primary" size="lg">
+              <button
+                variant="primary"
+                size="lg"
+                onClick={() => dispatch(role_patient())}
+              >
                 You Are Patient?
               </button>
             </Link>
 
             <Link to="/connectdocteur">
-              <button variant="primary" size="lg">
+              <button
+                variant="primary"
+                size="lg"
+                onClick={() => dispatch(role_docteur())}
+              >
                 You Are Doctor?
               </button>{" "}
             </Link>

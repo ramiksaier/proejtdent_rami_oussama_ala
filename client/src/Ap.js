@@ -4,6 +4,10 @@ import Detaildoc from "./components/Detaildoc";
 import Acceil from "./components/Acceil";
 import Error from "./components/Error";
 import Connect from "./components/Connect";
+import Inscription from "./components/Inscription";
+import ProfilDoc from "./components/ProfilDoc";
+import InscriptionPatient from "./components/insrciptionPatient";
+import ProfilePatient from "./components/ProfilePatient";
 const Ap = () => {
   return (
     <div>
@@ -12,8 +16,10 @@ const Ap = () => {
         <Route path="/detaildocteur" component={Detaildoc} />
         <Route path="/connectdocteur" component={Connect} />
         <Route path="/connectpatient" component={Connect} />
-
-
+        <Route path={["/adddoctor", "/edit/:id"]} component={Inscription} />
+        <Route path="/addpatient" component={InscriptionPatient} />
+        <Route path="/profile" component={ProfilDoc} />
+        <Route path="/detailPatient" component={ProfilePatient} />
         <Route path="/*" component={Error} />
       </Switch>
     </div>
