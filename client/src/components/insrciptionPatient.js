@@ -6,31 +6,7 @@ const genderOptions = [
   { key: "m", text: "M", value: "male" },
   { key: "f", text: "Me", value: "female" },
 ];
-const countryOptions = [
-  { key: "af", value: "af", text: "Tunis" },
-  { key: "ax", value: "ax", text: "Bizert" },
-  { key: "al", value: "al", text: "Sousse" },
-  { key: "dz", value: "dz", text: "Monastir" },
-  { key: "as", value: "as", text: "Nabeul" },
-  { key: "ad", value: "ad", text: "Kairaoune" },
-  { key: "ao", value: "ao", text: "Zaghwane" },
-  { key: "ai", value: "ai", text: "Mednine" },
-  { key: "ag", value: "ag", text: "kef" },
-  { key: "ar", value: "ar", text: "Silyana" },
-  { key: "am", value: "am", text: "ben Arous" },
-  { key: "aw", value: "aw", text: "Manouba" },
-  { key: "au", value: "au", text: "Suliana" },
-  { key: "at", value: "at", text: "Beja" },
-  { key: "az", value: "az", text: "sidi bouzid" },
-  { key: "bs", value: "bs", text: "Tataouin" },
-  { key: "bh", value: "bh", text: "Touzer" },
-  { key: "bd", value: "bd", text: "Gabes" },
-  { key: "bb", value: "bb", text: "jandouba" },
-  { key: "by", value: "by", text: "Gafsa" },
-  { key: "be", value: "be", text: "Gbeli" },
-  { key: "bz", value: "bz", text: "Manouba" },
-  { key: "bj", value: "bj", text: "Benin" },
-];
+
 const FormulairDoctor = () => {
   return (
     <Form>
@@ -122,12 +98,28 @@ const FormulairDoctor = () => {
           required
         />
         <Icon name="warehouse" />
-        <p>localisation</p>
-        <Select
-          placeholder="Select your country"
-          options={countryOptions}
-          required
-        />
+        <select id="localisation" name="localisation">
+          <option value="tunis ">tunis</option>
+          <option value="Nabeul">Nabeul</option>
+          <option value="Manouba">Manouba</option>
+          <option value="Sousse">Sousse</option>
+          <option value="Monastir">Mounastir</option>
+          <option value="Ariana">Ariana</option>
+          <option value="Beja">Beja</option>
+          <option value="Kairaoun">Kairaoune</option>
+          <option value="Gbelli">Gbelli</option>
+          <option value="Kef">Kef</option>
+          <option value="Jendouba">Jendouba</option>
+          <option value="Benarous">BenArous</option>
+          <option value="mahdia">Mahdia</option>
+          <option value="Medenin">Medenin</option>
+          <option value="sidibouzid">Sidi bouzid</option>
+          <option value="gafsa">gafsa</option>
+
+          <option value="tunis" selected>
+            Tunis
+          </option>
+        </select>
       </Form.Group>
       <Icon name="camera" />
       <input type="file" />

@@ -8,6 +8,7 @@ const genderOptions = [
   { key: "m", text: "M", value: "male" },
   { key: "f", text: "Me", value: "female" },
 ];
+
 const Inscription = () => {
   const [user, setuser] = useState({});
   const userReducer = useSelector((state) => state.doctorReducer.user);
@@ -17,6 +18,7 @@ const Inscription = () => {
     edit
       ? setuser(userReducer)
       : setuser({
+          images: "",
           firstName: "",
           lastName: "",
           Phone: "",
@@ -43,6 +45,13 @@ const Inscription = () => {
       <div className="FM">
         <img src="img/user/user2.png" alt="imguser" width="100px" />
       </div>
+      <Icon name="camera" />
+      <input
+        type="file"
+        name="images"
+        value={user.images}
+        onChange={handelchange}
+      />
       <Form.Group widths="equal">
         <Icon name="user md" />
         <Form.Field
@@ -123,16 +132,6 @@ const Inscription = () => {
           onChange={handelchange}
           value={user.PhoneCab}
         />
-        <Icon name="location arrow" />
-        <Form.Field
-          id="form-input-control-last-name"
-          control={Input}
-          label="Localisation"
-          name="localisation"
-          placeholder="Localisation"
-          value={user.localisation}
-          onChange={handelchange}
-        />
       </Form.Group>
       <Icon name="user md" />
       <Form.Field
@@ -144,6 +143,34 @@ const Inscription = () => {
         value={user.qualification}
         onChange={handelchange}
       />
+      <Icon name="warehouse" />
+      <select
+        id="localisation"
+        value={user.localisation}
+        onChange={handelchange}
+        name="localisation"
+      >
+        <option value="tunis ">tunis</option>
+        <option value="Nabeul">Nabeul</option>
+        <option value="Manouba">Manouba</option>
+        <option value="Sousse">Sousse</option>
+        <option value="Monastir">Mounastir</option>
+        <option value="Ariana">Ariana</option>
+        <option value="Beja">Beja</option>
+        <option value="Kairaoun">Kairaoune</option>
+        <option value="Gbelli">Gbelli</option>
+        <option value="Kef">Kef</option>
+        <option value="Jendouba">Jendouba</option>
+        <option value="Benarous">BenArous</option>
+        <option value="mahdia">Mahdia</option>
+        <option value="Medenin">Medenin</option>
+        <option value="sidibouzid">Sidi bouzid</option>
+        <option value="gafsa">gafsa</option>
+
+        <option value="tunis" selected>
+          Tunis
+        </option>
+      </select>
       <Icon name="building" />
       <Form.Field
         id="form-textarea-control-emplacementEducation"
