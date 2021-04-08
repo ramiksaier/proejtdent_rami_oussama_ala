@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Form, Input, TextArea, Button, Icon } from "semantic-ui-react";
+import { Form, Input, TextArea, Button, Select, Icon } from "semantic-ui-react";
 import { editdocteur, postdoctor } from "../REduxJS/ACTION/Docteur";
-const genderOptions = [
-  { key: "m", text: "M", value: "male" },
-  { key: "f", text: "Me", value: "female" },
-];
 
 const Inscription = () => {
   const [user, setuser] = useState({});

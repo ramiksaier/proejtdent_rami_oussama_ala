@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getonedoctor } from "../REduxJS/ACTION/Docteur";
 
 const Doctorcard = ({ el }) => {
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div className="col-md-4">
@@ -50,11 +54,13 @@ const Doctorcard = ({ el }) => {
               />{" "}
               {el.emplacementEducation}{" "}
             </div>
-            <Link to="/detaildocteur">
+            <Link
+              to={{ pathname: `/detaildocteur/${el._id}`, state: { el: el } }}
+            >
               <button className="btn btn-custom btn-lg page-scroll">
                 See More
               </button>
-           </Link>
+            </Link>
           </div>
         </div>
       </div>

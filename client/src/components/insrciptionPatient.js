@@ -1,13 +1,37 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Form, Input, Select, Button, Icon } from "semantic-ui-react";
-const genderOptions = [
-  { key: "m", text: "M", value: "male" },
-  { key: "f", text: "Me", value: "female" },
-];
-
-const FormulairDoctor = () => {
+import { Form, Input, Button, Icon } from "semantic-ui-react";
+import { editpatient, postpatient } from "../REduxJS/ACTION/Patient";
+const InscriptionPatient = () => {
+  const [user, setuser] = useState({});
+  const userReducer = useSelector((state) => state.patientReducer.user);
+  const edit = useSelector((state) => state.editReducer.edit);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    edit
+      ? setuser(userReducer)
+      : setuser({
+          image: "",
+          firstName: "",
+          lastName: "",
+          sex: "",
+          Phone: "",
+          email: "",
+          age: "",
+          password: "",
+          adress: "",
+        });
+  }, [userReducer]);
+  const handeldata = () => {
+    edit
+      ? dispatch(editpatient(userReducer._id, user))
+      : dispatch(postpatient(user));
+  };
+  const handelchange = (e) => {
+    setuser({ ...user, [e.target.name]: e.target.value });
+  };
   return (
     <Form>
       <h1 className="titreFD">bienvenue au espace patient</h1>
@@ -22,7 +46,9 @@ const FormulairDoctor = () => {
           label="First name:"
           placeholder="De 3 à 20 caractères"
           Type="text"
-          name="name"
+          name="firstName"
+          value={user.firstName}
+          onChange={handelchange}
           required
         />
         <Icon name="user md" />
@@ -32,19 +58,21 @@ const FormulairDoctor = () => {
           label="Last name:"
           placeholder="Last name"
           Type="text"
-          name="name"
+          name="lastName"
+          value={user.lastName}
+          onChange={handelchange}
           required
         />
         <Icon name="user md" />
-        <Form.Field
-          control={Select}
-          options={genderOptions}
-          label={{ children: "SEX", htmlFor: "form-select-control-gender" }}
-          placeholder="Sex:"
-          search
-          searchInput={{ id: "form-select-control-gender" }}
-          required
-        />
+        <Form.Field>
+          <select id="sex" value={user.sex} onChange={handelchange} name="sex">
+            <option value="femelle">femelle</option>
+
+            <option value="male" selected>
+              Male
+            </option>
+          </select>
+        </Form.Field>
       </Form.Group>
       <Form.Group widths="equal">
         <Icon name="envelope" />
@@ -55,6 +83,9 @@ const FormulairDoctor = () => {
           label="Email:"
           placeholder="XXXX@.com"
           type="email"
+          name="email"
+          value={user.email}
+          onChange={handelchange}
         />
         <Icon name="lock" />
         <Form.Field
@@ -64,15 +95,10 @@ const FormulairDoctor = () => {
           placeholder="Mode de Passe"
           type="password"
           minlength="8"
+          name="password"
+          value={user.password}
+          onChange={handelchange}
           required
-        />
-        <Icon name="lock" />
-        <Form.Field
-          id="form-input-control-last-name"
-          control={Input}
-          label="Confirmation de Mot de passe:"
-          placeholder="Confirmation de mot de passe"
-          type="password"
         />
       </Form.Group>
       <Form.Group widths="equal">
@@ -84,7 +110,9 @@ const FormulairDoctor = () => {
           label="Nuemro tel Personel:"
           placeholder="+216"
           type="number"
-          name="name"
+          name="Phone"
+          value={user.Phone}
+          onChange={handelchange}
           required
         />
         <Icon name="eye" />
@@ -93,12 +121,19 @@ const FormulairDoctor = () => {
           control={Input}
           label="Votre Age:"
           placeholder=""
-          type="datetime-local"
-          name="date_inscription3"
+          type="number"
+          name="age"
+          value={user.age}
+          onChange={handelchange}
           required
         />
         <Icon name="warehouse" />
-        <select id="localisation" name="localisation">
+        <select
+          id="localisation"
+          name="adress"
+          value={user.adress}
+          onChange={handelchange}
+        >
           <option value="tunis ">tunis</option>
           <option value="Nabeul">Nabeul</option>
           <option value="Manouba">Manouba</option>
@@ -122,13 +157,18 @@ const FormulairDoctor = () => {
         </select>
       </Form.Group>
       <Icon name="camera" />
-      <input type="file" />
+      <input type="file"
+      name="image"
+      value={user.image}
+      onChange={handelchange} />
       <div className="enregister">
         <Link to="/detailPatient">
-          <Button negative>Save</Button>
+          <Button negative onClick={handeldata}>
+            Save
+          </Button>
         </Link>
       </div>
     </Form>
   );
 };
-export default FormulairDoctor;
+export default InscriptionPatient;

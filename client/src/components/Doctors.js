@@ -1,4 +1,6 @@
 import react, { useEffect } from "react";
+import { Icon, Input } from "semantic-ui-react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getdoctors } from "../REduxJS/ACTION/Docteur";
 import Doctorcard from "./Doctorcard";
@@ -16,6 +18,16 @@ const Doctors = () => {
       <div className="container">
         <div className="section-title text-center">
           <h2>OUR Docteurs</h2>
+        </div>
+        <div className="search">
+          <Input
+            icon={<Icon name="search" inverted circular link />}
+            placeholder="Search..."
+          />
+          <Input
+            icon={<Icon name="crosshairs" inverted circular link />}
+            placeholder="Search..."
+          />{" "}
         </div>
 
         <div className="row">

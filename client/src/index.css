@@ -73,3 +73,52 @@ code {
   justify-content: center;
   margin-top: 30px;
 }
+.btnrdv {
+  margin-left: 1100px;
+  bottom: 450px;
+  position: absolute;
+}
+.card {
+  left: 40px;
+  top: 100px;
+}
+.card2 {
+  margin-left: 400px;
+  bottom: 400px;
+  position: absolute;
+}
+.card2 h1 {
+  color: dodgerblue;
+}
+.card3 {
+  display: flex;
+  justify-content: center;
+}
+.card4 {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.time {
+  display: flex;
+  flex-direction: column;
+}
+.card4t {
+  color: dodgerblue;
+}
+.cardt h1 {
+  color: dodgerblue;
+}
+.titre {
+  color: dodgerblue;
+}
+.timeimg {
+  width: 2px;
+  height: 2px;
+  margin-left: 300px;
+  top: 200px;
+}
+.search {
+  display: flex;
+  justify-content: space-around;
+}

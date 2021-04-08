@@ -1,0 +1,4 @@
+export const GET_PATIENT = "GET_PATIENT";
+export const LOAD_PATIENT = "LOAD_PATIENT";
+export const FAIL_PATIENT = "FAIL_PATIENT";
+export const GETONE_PATIENT = "GETONE_PATIENT";
