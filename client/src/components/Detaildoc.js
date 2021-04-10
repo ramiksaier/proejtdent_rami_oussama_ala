@@ -31,7 +31,7 @@ const DetailDocCard = ({ location }) => {
               <br></br>
               <span className="date">
                 <h3>
-                  <span></span> {el.age} ans`
+                  <span></span> {el.age} ans
                 </h3>
               </span>
             </Card.Meta>

@@ -39,7 +39,10 @@ const Connect = () => {
         <div className="c1">
           {roleuser === "doctor" ? (
             <Link to="/adddoctor">
-              <a href="Don't have an account? Sign Up">
+              <a
+                href="Don't have an account? Sign Up"
+                onClick={() => dispatch(toggle_add())}
+              >
                 "Don't have an account? Sign Up"
               </a>
             </Link>

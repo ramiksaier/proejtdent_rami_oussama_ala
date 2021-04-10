@@ -15,7 +15,7 @@ import {
     user: {},
   };
   //pure function
-  const patientReducer = (state = initialstate, { type, payload }) => {
+  const patientReducer = (state = initialstate, { type, payload })  =>  {
     switch (type) {
       case LOAD_PATIENT:
         return { ...state, load: true };

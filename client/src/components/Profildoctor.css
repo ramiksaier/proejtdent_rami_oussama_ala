@@ -1,0 +1,64 @@
+border-md {
+  border-width: 2px !important;
+}
+.btn-facebook {
+  background: #405D9D !important;
+  border: none !important;
+}
+.btn-facebook:hover,
+.btn-facebook:focus {
+  background: #314879 !important;
+}
+.btn-twitter {
+  background: #42AEEC !important;
+  border: none !important;
+}
+.btn-twitter:hover,
+.btn-twitter:focus {
+  background: #1799E4 !important;
+}
+/*
+  *
+  * ==========================================
+  * FOR DEMO PURPOSES
+  * ==========================================
+  *
+  */
+body {
+  min-height: 100vh !important;
+}
+.form-control:not(select) {
+  padding: 1.5rem 0.5rem !important;
+}
+select.form-control {
+  height: 52px !important;
+  padding-left: 0.5rem !important;
+}
+.shadow-textarea textarea.form-control::placeholder {
+  font-weight: 300 !important;
+}
+.shadow-textarea textarea.form-control {
+  padding-left: 0.8rem !important;
+}
+.p {
+  color: #1799E4 !important;
+  font-size: large !important;
+  font-style: italic !important;
+}
+.file {
+  height: 50px;
+  width: 310px;
+  margin-left: 850px;
+}
+.localisation {
+  height: 50px;
+  width: 310px;
+  bottom: 18px;
+  margin-left: 500px;
+  position: absolute;
+}
+.enregister {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

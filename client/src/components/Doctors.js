@@ -1,4 +1,4 @@
-import react, { useEffect } from "react";
+import react, { useEffect, useState } from "react";
 import { Icon, Input } from "semantic-ui-react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,9 @@ const Doctors = () => {
   useEffect(() => {
     dispatch(getdoctors());
   }, []);
+  const [inputSearch, setInputSearch] = useState("");
+  const [inputSearchbyplace, setInputSearchbyplace] = useState("");
+
   return (
     <div id="testimonials">
       <div className="container">
@@ -22,17 +25,30 @@ const Doctors = () => {
         <div className="search">
           <Input
             icon={<Icon name="search" inverted circular link />}
-            placeholder="Search..."
+            placeholder="Search by name..."
+            onChange={(e) => setInputSearch(e.target.value)}
           />
           <Input
             icon={<Icon name="crosshairs" inverted circular link />}
-            placeholder="Search..."
+            placeholder="Search by place..."
+            onChange={(e) => setInputSearchbyplace(e.target.value)}
           />{" "}
         </div>
 
         <div className="row">
           {!load ? (
-            listDocteur.map((el) => <Doctorcard el={el} key={el._id} />)
+            listDocteur
+              .filter(
+                (docteur) =>
+                  docteur.firstName
+                    .toUpperCase()
+                    .includes(inputSearch.toUpperCase()) &&
+                  docteur.localisation
+                    .toUpperCase()
+                    .includes(inputSearchbyplace.toUpperCase())
+              )
+
+              .map((el) => <Doctorcard el={el} key={el._id} />)
           ) : (
             <Spiner />
           )}

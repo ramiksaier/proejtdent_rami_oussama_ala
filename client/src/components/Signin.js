@@ -14,9 +14,10 @@ const Signin = () => {
             <img src="img/user/user1.png" className="img-responsive" alt="" />{" "}
             <img src="img/user/user2.png" className="img-responsive" alt="" />{" "}
           </div>
-          <div className="btn">
+          <div className="btn ">
             <Link to="/connectpatient">
               <button
+                className="btn btn-custom btn-lg page-scroll"
                 variant="primary"
                 size="lg"
                 onClick={() => dispatch(role_patient())}
@@ -27,6 +28,7 @@ const Signin = () => {
 
             <Link to="/connectdocteur">
               <button
+                className="btn btn-custom btn-lg page-scroll"
                 variant="primary"
                 size="lg"
                 onClick={() => dispatch(role_docteur())}

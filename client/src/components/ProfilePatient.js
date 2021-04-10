@@ -1,9 +1,12 @@
 import React from "react";
 
-const ProfilePatient = () => {
+const ProfilePatient = ({ location }) => {
+  const user = location.state.user;
   return (
     <div>
-      <h1>im patient profil</h1>
+      <h1>{user.firstName}</h1>
+      <h2>{user.lastName}</h2>
+      <button>modifier</button>
     </div>
   );
 };
