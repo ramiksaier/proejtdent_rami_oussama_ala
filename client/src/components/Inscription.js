@@ -53,7 +53,7 @@ const Inscription = () => {
       </header>
       <div className="container">
         <div className="row py-5 mt-4 align-items-center">
-          {/* For Demo Purpose */} 
+          {/* For Demo Purpose */}
           <div className="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <div className="rami">
               <img
@@ -93,7 +93,6 @@ const Inscription = () => {
             </Form.Group>
             <Form.Group widths={2}>
               <Form.Input
-                type="email"
                 label="Email:"
                 placeholder="xxxx@.com"
                 icon="mail"
@@ -214,11 +213,14 @@ const Inscription = () => {
             </div>
           </Form>
           <div className="enregister">
-            <Link to={{
-                  pathname: `/profiledocteur/${user._id}`,
-                  state: { user: user },
-                }}
-              > <Button negative onClick={handeldata}>
+            <Link
+              to={{
+                pathname: `/profiledocteur/${user._id}`,
+                state: { user: user },
+              }}
+            >
+              {" "}
+              <Button negative onClick={handeldata}>
                 {edit ? "edit" : "save"}
               </Button>
             </Link>

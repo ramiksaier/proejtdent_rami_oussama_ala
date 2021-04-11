@@ -12,6 +12,7 @@ app.use("/api/user", require("./Router/user"));
 app.use("/api/patient", require("./Router/Patient"));
 app.use("/api/docteur", require("./Router/Docteur"));
 app.use("/api/rendezvous", require("./Router/Rendevous"));
+app.use("/api/admin", require("./Router/Admin"));
 
 //connect to server
 const PORT = process.env.PORT;

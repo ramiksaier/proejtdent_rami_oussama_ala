@@ -18,9 +18,9 @@ const InscriptionPatient = () => {
           firstName: "",
           lastName: "",
           sex: "",
-          Phone: "",
+          Phone: 0,
           email: "",
-          age: "",
+          age: 0,
           password: "",
           adress: "",
         });
@@ -33,6 +33,7 @@ const InscriptionPatient = () => {
   const handelchange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
   };
+  console.log(user);
 
   return (
     <div>

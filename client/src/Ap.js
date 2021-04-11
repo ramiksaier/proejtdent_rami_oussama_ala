@@ -10,6 +10,7 @@ import InscriptionPatient from "./components/insrciptionPatient";
 import ProfilePatient from "./components/ProfilePatient";
 import Rendevous from "./components/Rendevous";
 import Allrdvs from "./components/Allrdvs";
+import Admin from "./components/Admin";
 const Ap = () => {
   return (
     <div>
@@ -19,11 +20,16 @@ const Ap = () => {
         <Route path="/connectdocteur" component={Connect} />
         <Route path="/connectpatient" component={Connect} />
         <Route path={["/adddoctor", "/edit/:id"]} component={Inscription} />
-        <Route path="/addpatient" component={InscriptionPatient} />
+        <Route
+          path={["/addpatient", "/editpatient/:id"]}
+          component={InscriptionPatient}
+        />
         <Route path="/profiledocteur/:id" component={ProfilDoc} />
         <Route path="/detailPatient/:id" component={ProfilePatient} />
         <Route path="/prendrerdv" component={Rendevous} />
         <Route path="/rdvs" component={Allrdvs} />
+        <Route path="/admin" component={Admin} />
+
         <Route path="/*" component={Error} />
       </Switch>
     </div>

@@ -27,7 +27,9 @@ export const getonedoctor = (id) => (dispatch) => {
 };
 export const postdoctor = (newuser) => async (dispatch) => {
   try {
-    await axios.post("/api/docteur", newuser);
+    const result = await axios.post("/api/docteur", newuser);
+    console.log("result", result);
+    dispatch(getonedoctor(result.data.response._id));
     dispatch(getdoctors());
   } catch (error) {
     dispatch({ type: FAIL_DOCTORS, payload: error.response });
