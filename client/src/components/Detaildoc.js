@@ -6,6 +6,10 @@ const DetailDocCard = ({ location }) => {
   const el = location.state.el;
   return (
     <div>
+      <Link to="/">
+        <button className="btn btn-custom btn-lg page-scroll"> DET.TN</button>
+      </Link>
+
       <div className="card">
         <Card style={{ width: "15rem" }}>
           {el.img ? (
@@ -41,9 +45,9 @@ const DetailDocCard = ({ location }) => {
       </div>
       <div className="btnrdv">
         <Link to="/prendrerdv">
-          <Button color="youtube">
+          <button className="btn btn-custom btn-lg page-scroll">
             <Icon name="calendar" /> Prendre RDV
-          </Button>{" "}
+          </button>{" "}
         </Link>
       </div>
       <div className="card2">
@@ -83,7 +87,7 @@ const DetailDocCard = ({ location }) => {
             <p> {el.qualification} </p>
             <h4>
               Assurance maladie:
-              <img src="img/user/cnam.jpg" style={{ width: "50px" }}></img>
+              <img src="../img/user/cnam.jpg" style={{ width: "50px" }}></img>
             </h4>
           </Card.Content>
         </Card>
@@ -93,7 +97,7 @@ const DetailDocCard = ({ location }) => {
           <h1 className="card4t"> Horaires d'ouverture:</h1>
           <Card.Content>
             <div className="timeimg">
-              <img src="img/user/time.png" alt="img" />
+              <img src="../img/user/time.png" alt="img" />
             </div>
             <div className="time">
               <h6>Lundi</h6> <p>09:00/12:00 - 14:00/18:00</p>
