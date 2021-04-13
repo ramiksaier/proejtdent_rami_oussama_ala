@@ -26,8 +26,9 @@ const Ap = () => {
         />
         <Route path="/profiledocteur/:id" component={ProfilDoc} />
         <Route path="/detailPatient/:id" component={ProfilePatient} />
-        <Route path="/prendrerdv" component={Rendevous} />
+        <Route path={["/prendrerdv/:id","/editrendezvoys/:id"]} component={Rendevous} />
         <Route path="/rdvs" component={Allrdvs} />
+        
         <Route path="/admin" component={Admin} />
 
         <Route path="/*" component={Error} />

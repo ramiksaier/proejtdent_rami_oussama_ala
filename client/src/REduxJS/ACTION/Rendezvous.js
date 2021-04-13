@@ -26,7 +26,7 @@ export const getonerendezvous = (id) => (dispatch) => {
     )
     .catch((err) => console.log(err));
 };
-export const postdoctor = (newrendezvous) => async (dispatch) => {
+export const postrendezvous = (newrendezvous) => async (dispatch) => {
   try {
     const result = await axios.post("/api/rendezvous", newrendezvous);
     dispatch(getonerendezvous(result.data.response._id));

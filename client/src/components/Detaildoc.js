@@ -44,7 +44,7 @@ const DetailDocCard = ({ location }) => {
         </Card>
       </div>
       <div className="btnrdv">
-        <Link to="/prendrerdv">
+        <Link to={{ pathname: `/prendrerdv/${el._id}`, state: { el: el } }}>
           <button className="btn btn-custom btn-lg page-scroll">
             <Icon name="calendar" /> Prendre RDV
           </button>{" "}

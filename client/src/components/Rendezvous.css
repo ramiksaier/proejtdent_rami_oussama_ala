@@ -1,0 +1,21 @@
+.some-class {
+  width: 50%;
+  padding: 15px 22px;
+  margin: 10px 5px;
+  box-sizing: border-box;
+}
+.inp {
+  border: none;
+  border-bottom: 4px solid #8842d5;
+}
+.nice-dates-navigation,
+.nice-dates-day {
+  color: #111;
+}
+.input1 {
+  box-shadow: none;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  max-width: 6000px;
+  transition: none;
+}

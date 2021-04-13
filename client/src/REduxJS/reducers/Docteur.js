@@ -1,6 +1,7 @@
 //import type
 
 import {
+  CONF_DOCTOR,
   FAIL_DOCTORS,
   GETONE_DOCTORS,
   GET_DOCTORS,
@@ -13,6 +14,7 @@ const initialstate = {
   error: null,
   load: false,
   user: {},
+  status: true,
 };
 //pure function
 const doctorReducer = (state = initialstate, { type, payload }) => {
@@ -26,7 +28,8 @@ const doctorReducer = (state = initialstate, { type, payload }) => {
       return { ...state, load: false, errors: payload };
     case GETONE_DOCTORS:
       return { ...state, user: payload };
-
+    case CONF_DOCTOR:
+      return { ...state, status: [...payload.list.status, payload] };
     default:
       return state;
   }

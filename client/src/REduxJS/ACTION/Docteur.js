@@ -1,4 +1,5 @@
 import {
+  CONF_DOCTOR,
   FAIL_DOCTORS,
   GETONE_DOCTORS,
   GET_DOCTORS,
@@ -10,6 +11,7 @@ export const getdoctors = () => async (dispatch) => {
   try {
     let result = await axios.get("/api/docteur");
     dispatch({ type: GET_DOCTORS, payload: result.data });
+    console.log(result.data);
   } catch (error) {
     dispatch({ type: FAIL_DOCTORS, payload: error.response });
   }
@@ -39,6 +41,15 @@ export const editdocteur = (id, newdocteur) => async (dispatch) => {
   try {
     await axios.put(`/api/docteur/${id}`, newdocteur);
     dispatch(getdoctors());
+  } catch (error) {
+    dispatch({ type: FAIL_DOCTORS, payload: error.response });
+  }
+};
+export const conf_doc = () => async (dispatch) => {
+  dispatch({ type: LOAD_DOCTORS });
+  try {
+    let result = await axios.get("/api/docteur");
+    dispatch({ type: CONF_DOCTOR, payload: result.data.list });
   } catch (error) {
     dispatch({ type: FAIL_DOCTORS, payload: error.response });
   }
