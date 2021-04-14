@@ -82,13 +82,16 @@ const ProfilDoctor = ({ location }) => {
                 </Button>
               </Link>
               <br></br>
-              <Link>
+              <Link
+              >
                 <Button color="google plus">
                   <Icon name="user" /> My Patients
                 </Button>
               </Link>
               <br></br>
-              <Link to="rdvs">
+              <Link to={{
+                  pathname: `/rdvs/${user._id}`,
+                  state: { user: user }}}>
                 <Button color="twitter">
                   <Icon name="calendar check" /> My RDVs
                 </Button>

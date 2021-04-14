@@ -71,7 +71,7 @@ const ProfilePatient = ({ location }) => {
               </div>
             </div>
             <div className="col-md-2">
-              <Link to={"/editpatient/:id"}>
+              <Link to={`/editpatient/${user._id}`}>
                 <Button
                   color="facebook"
                   onClick={() => {
@@ -80,6 +80,16 @@ const ProfilePatient = ({ location }) => {
                   }}
                 >
                   <Icon name="edit" /> Edit Profile
+                </Button>
+              </Link>
+              <Link
+                to={{
+                  pathname: `/ourdoc/${user._id}`,
+                  state: { patient: user },
+                }}
+              >
+                <Button color="facebook">
+                  <Icon name="edit" /> looking for doctor???
                 </Button>
               </Link>
               <br></br>

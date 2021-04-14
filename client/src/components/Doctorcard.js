@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getonedoctor } from "../REduxJS/ACTION/Docteur";
 
-const Doctorcard = ({ el }) => {
-  const dispatch = useDispatch();
+const Doctorcard = ({ el}) => {
 
   return (
     <div>

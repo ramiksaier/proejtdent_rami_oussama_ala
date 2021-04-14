@@ -8,8 +8,11 @@ import { editrendezvous, postrendezvous } from "../REduxJS/ACTION/Rendezvous";
 import { enGB } from "date-fns/locale";
 import { DatePickerCalendar, useDateInput } from "react-nice-dates";
 import "react-nice-dates/build/style.css";
+import doctorReducer from "../REduxJS/reducers/Docteur";
+import "./Rendezvous.css";
+
 const Rendezvous = ({ location }) => {
-  const el = location.state.el;
+  const docteur = location.state.el;
 
   const [date, setDate] = useState();
   const inputProps = useDateInput({
@@ -29,6 +32,8 @@ const Rendezvous = ({ location }) => {
     edit
       ? setuser(rendezvousReducer)
       : setuser({
+          id_doc: "",
+          id_pat: "",
           jour: "",
           dateRen: "",
           description: "",
@@ -46,25 +51,29 @@ const Rendezvous = ({ location }) => {
     <div>
       <h1>
         {" "}
-        welcome please choose your time with Dr {el.firstName} {el.lastName}
+        welcome please choose your time with Dr {docteur.firstName}{" "}
+        {docteur.lastName}
       </h1>
 
       <DatePickerCalendar date={date} onDateChange={setDate} locale={enGB} />
 
-      <p>
+      <p classename="inp">
         The selected date is{" "}
         {date && format(date, "dd MMM yyyy", { locale: enGB })}
-        <br /> please reteap manually
+        <br /> please reteap manually :
       </p>
       <input
-        className="input"
+        className="inp"
         placeholder="jj/mm/aaaa"
         value={user.jour}
         name="jour"
         onChange={handelchange}
       />
+
+      <p>Docteur Name : {docteur.firstName}</p>
       <Form.Field>
         <select
+          className="inp"
           id="localisation"
           value={user.dateRen}
           onChange={handelchange}
@@ -85,7 +94,8 @@ const Rendezvous = ({ location }) => {
       </Form.Field>
       <Form.Field
         control={TextArea}
-        label="Education:"
+        className="inp"
+        label="Description:"
         placeholder="descript your cas..."
         name="description"
         value={user.description}
