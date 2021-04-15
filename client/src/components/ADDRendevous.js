@@ -32,7 +32,7 @@ const Rendezvous = ({ location }) => {
     edit
       ? setuser(rendezvousReducer)
       : setuser({
-          id_doc: "",
+          id_doc: docteur._id,
           id_pat: "",
           jour: "",
           dateRen: "",

@@ -32,12 +32,21 @@ afficherendezvous = async (req, res) => {
 };
 afficheOnerendezvous = async (req, res) => {
   try {
-    const getone = await Rendezvous.findOne({ _id: req.params._id });
+    const getone = await Rendezvous.find({ id_doc: req.params._id });
     res
       .status(200)
       .send({ message: "this is the rendez vous you looking for", getone });
   } catch (error) {
     res.status(400).send("could not get this id ,please check you again id  ");
+  }
+};
+afficheOnerendezvousbyDoctorid = async (req, res) => {
+  try {
+    const list = await Rendezvous.find({ id_doc: req.params._id });
+    res.send({ msg: "this is your rendezvous", list });
+    console.log(list);
+  } catch (error) {
+    res.status(400).send("can not get the data");
   }
 };
 Deleterendezvous = async (req, res) => {
@@ -69,6 +78,7 @@ module.exports = controller = {
   adddrendezvous,
   afficherendezvous,
   afficheOnerendezvous,
+  afficheOnerendezvousbyDoctorid,
   Deleterendezvous,
   updaterendezvous,
 };

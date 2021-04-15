@@ -19,6 +19,8 @@ router.get("/", controleur.afficherendezvous);
 //PATH:http://localhost/api/contact/
 //@params req.params._id
 router.get("/:_id", controleur.afficheOnerendezvous);
+router.get("/docteur/:id_doc", controleur.afficheOnerendezvousbyDoctorid);
+
 //@methode DELETE
 //@DESC DELETE one CONTACT
 //PATH:http://localhost/api/contact/

@@ -13,18 +13,18 @@ export const getrendezvous = () => async (dispatch) => {
     dispatch({ type: GET_RENDEZVOUS, payload: result.data });
   } catch (error) {
     dispatch({ type: FAIL_RENDEZVOUS, payload: error.response });
-  }
+  } 
 };
-export const getonerendezvous = (id) => (dispatch) => {
-  axios
-    .get(`/api/rendezvous/${id}`)
-    .then((res) =>
-      dispatch({
-        type: GETONE_RENDEZVOUS,
-        payload: res.data.getone,
-      })
-    )
-    .catch((err) => console.log(err));
+
+export const getonerendezvous = (id) => async (dispatch) => {
+  dispatch({ type: LOAD_RENDEZVOUS });
+  try {
+    let result = await axios.get(`/api/rendezvous/${id}`);
+    dispatch({ type: GETONE_RENDEZVOUS, payload: result.data });
+    console.log(result.data);
+  } catch (error) {
+    dispatch({ type: FAIL_RENDEZVOUS, payload: error.response });
+  }
 };
 export const postrendezvous = (newrendezvous) => async (dispatch) => {
   try {
