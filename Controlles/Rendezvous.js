@@ -73,6 +73,7 @@ updaterendezvous = async (req, res) => {
     res.status(400).send("can not find the rendez vous you looking for");
   }
 };
+
 //export methode
 module.exports = controller = {
   adddrendezvous,

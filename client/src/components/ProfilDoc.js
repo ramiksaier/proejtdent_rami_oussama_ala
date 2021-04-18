@@ -4,14 +4,19 @@ import { getonedoctor } from "../REduxJS/ACTION/Docteur";
 
 import { Button, Icon } from "semantic-ui-react";
 import "./Profildoctor.css";
+import { useSelector } from "react-redux";
+
 import { Link } from "react-router-dom";
 import { toggle_edit } from "../REduxJS/ACTION/Edit";
-const ProfilDoctor = ({ location }) => {
-  const user = location.state.user;
+import Navbar from "./Navbar";
+const ProfilDoctor = () => {
+  //const dd = location.state.user;
+  const user = useSelector((state) => state.doctorReducer.doctor);
 
   const dispatch = useDispatch();
   return (
     <div className="backround">
+      <Navbar />
       <div className="container emp-profile">
         <form method="post">
           <div className="row">
@@ -20,7 +25,7 @@ const ProfilDoctor = ({ location }) => {
                 {!user.images ? (
                   <img
                     src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"
-                    alt="img"
+                    alt="imgaag"
                     style={{
                       width: "400px",
                       height: "400px",
@@ -82,16 +87,18 @@ const ProfilDoctor = ({ location }) => {
                 </Button>
               </Link>
               <br></br>
-              <Link
-              >
+              <Link>
                 <Button color="google plus">
                   <Icon name="user" /> My Patients
                 </Button>
               </Link>
               <br></br>
-              <Link to={{
+              <Link
+                to={{
                   pathname: `/rdvs/${user._id}`,
-                  state: { user: user }}}>
+                  state: { user: user },
+                }}
+              >
                 <Button color="twitter">
                   <Icon name="calendar check" /> My RDVs
                 </Button>

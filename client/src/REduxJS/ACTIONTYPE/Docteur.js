@@ -3,5 +3,9 @@ export const LOAD_DOCTORS = "LOAD_DCOTORS";
 export const FAIL_DOCTORS = "FAIL_DCOTORS";
 export const GETONE_DOCTORS = "GETONE_DOCTORS";
 export const CONF_DOCTOR = "CONF_DOCTOR";
-
+export const REGISTER_DOCTOR = "REGISTER_DOCTOR";
+export const LOGOUT_DOCTOR = "LOGOUT_DOCTOR";
+export const LOGIN_DOCTEUR = "LOGIN_DOCTEUR";
+export const FAIL_DOC = "FAIL_DOC";
+export const CURRENT_DOCTEUR = "CURRENT_DOCTEUR";
 

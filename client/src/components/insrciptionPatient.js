@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import { editpatient, postpatient } from "../REduxJS/ACTION/Patient";
 import "./Profildoctor.css";
-const InscriptionPatient = () => {
+const InscriptionPatient = ({history}) => {
   const [user, setuser] = useState({});
   const userReducer = useSelector((state) => state.patientReducer.user);
   const edit = useSelector((state) => state.editReducer.edit);
@@ -28,7 +28,7 @@ const InscriptionPatient = () => {
   const handeldata = () => {
     edit
       ? dispatch(editpatient(userReducer._id, user))
-      : dispatch(postpatient(user));
+      : dispatch(postpatient(user,history));
   };
   const handelchange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
@@ -198,7 +198,7 @@ const InscriptionPatient = () => {
             <Button negative onClick={handeldata}>
               <Link
                 to={{
-                  pathname: `/detailPatient/${user._id}`,
+                  pathname: `/detailPatient/`,
                   state: { user: user },
                 }}
               >

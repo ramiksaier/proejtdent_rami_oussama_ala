@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { confirmer_docteur } from "../REduxJS/ACTION/Confirmation";
-import { conf_doc } from "../REduxJS/ACTION/Docteur";
 
 const AdminDoctcard = ({ el }) => {
-  const dispatch = useDispatch();
-  const status = useSelector((state) => state.doctorReducer.status);
-
+  
+ 
   return (
     <div>
       <div className="col-md-4">
@@ -58,7 +56,7 @@ const AdminDoctcard = ({ el }) => {
 
           <button
             className="btn btn-custom btn-lg page-scroll"
-            onClick={() => dispatch(conf_doc())}
+             
           >
             confirmer doctor
           </button>

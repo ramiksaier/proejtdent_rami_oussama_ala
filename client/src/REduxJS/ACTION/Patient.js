@@ -1,8 +1,12 @@
 import {
+  CURRENT_PATIENT,
   FAIL_PATIENT,
   GETONE_PATIENT,
   GET_PATIENT,
   LOAD_PATIENT,
+  LOGIN_PATIENT,
+  LOGOUT_PATIENT,
+  REGISTER_PATIENT,
 } from "../ACTIONTYPE/Patient";
 import axios from "axios";
 export const getpatient = () => async (dispatch) => {
@@ -25,14 +29,19 @@ export const getonepatient = (id) => (dispatch) => {
     )
     .catch((err) => console.log(err));
 };
-export const postpatient = (newuser) => async (dispatch) => {
+export const postpatient = (newUser, history) => async (dispatch) => {
+  dispatch({ type: LOAD_PATIENT });
+  console.log(history);
   try {
+    const result = await axios.post("/api/patient/signup", newUser);
 
-    const result =await axios.post("/api/patient", newuser);
-    dispatch(getonepatient(result.data.response._id));
-     dispatch(getpatient());
+    dispatch({ type: REGISTER_PATIENT, payload: result.data }); //msg , token , user
+    console.log(result.data);
+    history.push("/detailPatient");
   } catch (error) {
-    dispatch({ type: FAIL_PATIENT, payload: error.response });
+    console.log(error.response.data.errorrs);
+    // error.response.data.errors.map((el) => alert(el.msg));
+    dispatch({ type: FAIL_PATIENT, payload: error.response.data.errors });
   }
 };
 export const editpatient = (id, newpatient) => async (dispatch) => {
@@ -42,4 +51,43 @@ export const editpatient = (id, newpatient) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: FAIL_PATIENT, payload: error.response });
   }
+};
+export const loginP = (user, history) => async (dispatch) => {
+  dispatch({ type: LOAD_PATIENT });
+
+  try {
+    const result = await axios.post("/api/patient/signin", user);
+    dispatch({ type: LOGIN_PATIENT, payload: result.data }); //msg /token , user
+
+    history.push("/detailPatient");
+  } catch (error) {
+    // error.response.data.errors.map((el) =>
+    //   setTimeout(function () {
+    //     alert(el.msg);
+    //   }, 3000)
+    // );
+    dispatch({ type: FAIL_PATIENT, payload: error.response.data.errors });
+  }
+};
+export const logout = () => {
+  return {
+    type: LOGOUT_PATIENT,
+  };
+};
+
+export const currentPatient = () => async (dispatch) => {
+  try {
+    const options = {
+      headers: { Authorization: localStorage.getItem("token") },
+    };
+    const result = await axios.get("/api/patient/current", options);
+    dispatch({ type: CURRENT_PATIENT, payload: result.data });
+  } catch (error) {
+    dispatch({ type: FAIL_PATIENT, payload: error.response.data });
+  }
+};
+export const videErrors = () => {
+  return {
+    type: "VIDE_ERRORS",
+  };
 };

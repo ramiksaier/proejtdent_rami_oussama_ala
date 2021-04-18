@@ -25,4 +25,4 @@ const docteurSchema = new schema({
   worktime: String,
   emplacementEducation: { type: String, required: true },
 });
-module.export = Docteur = mongoose.model("docteur", docteurSchema);
+module.exports = Docteur = mongoose.model("docteur", docteurSchema);

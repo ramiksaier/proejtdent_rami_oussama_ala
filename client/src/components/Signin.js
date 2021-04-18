@@ -9,7 +9,7 @@ const Signin = () => {
     <div id="features" className="text-center">
       <div className="container">
         <div className="col-md-10 col-md-offset-1 section-title">
-          <h2>SING UP</h2>
+          <h2>SING IN</h2>
           <div className="user">
             <img src="img/user/user1.png" className="img-responsive" alt="" />{" "}
             <img src="img/user/user2.png" className="img-responsive" alt="" />{" "}

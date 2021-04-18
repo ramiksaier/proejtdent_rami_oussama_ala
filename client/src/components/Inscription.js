@@ -7,10 +7,13 @@ import { editdocteur, postdoctor } from "../REduxJS/ACTION/Docteur";
 import { getonedoctor } from "../REduxJS/ACTION/Docteur";
 
 import "./Profildoctor.css";
-const Inscription = () => {
+import Errors from "./Errors";
+const Inscription = ({ history }) => {
   const [user, setuser] = useState({});
   const userReducer = useSelector((state) => state.doctorReducer.user);
   const edit = useSelector((state) => state.editReducer.edit);
+  const errors = useSelector((state) => state.doctorReducer.errors);
+
   const dispatch = useDispatch();
   useEffect(() => {
     edit
@@ -32,7 +35,7 @@ const Inscription = () => {
   const handeldata = () => {
     edit
       ? dispatch(editdocteur(userReducer._id, user))
-      : dispatch(postdoctor(user));
+      : dispatch(postdoctor(user, history));
   };
   const handelchange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
@@ -42,6 +45,8 @@ const Inscription = () => {
   return (
     <div>
       <header className="header">
+        {errors.length > 0 ? errors.map((el) => <Errors error={el} />) : null}
+
         <nav className="navbar navbar-expand-lg navbar-light py-3">
           <div className="container">
             {/* Navbar Brand */}

@@ -48,14 +48,15 @@ const Navigation = () => {
                 Gallery
               </a>
             </li>
-            <li>
-              <a href="#features" className="page-scroll">
-                SIGN UP
-              </a>
-            </li>
+
             <li>
               <a href="#team" className="page-scroll">
                 Team
+              </a>
+            </li>
+            <li>
+              <a href="#features" className="page-scroll">
+                SIGN IN
               </a>
             </li>
             <li>

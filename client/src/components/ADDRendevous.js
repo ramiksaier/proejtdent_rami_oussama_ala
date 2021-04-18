@@ -1,7 +1,6 @@
-import React, { useState } from "react";
 import { format } from "date-fns";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, TextArea, Button } from "semantic-ui-react";
 import { editrendezvous, postrendezvous } from "../REduxJS/ACTION/Rendezvous";

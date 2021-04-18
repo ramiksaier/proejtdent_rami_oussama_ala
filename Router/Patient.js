@@ -2,13 +2,25 @@ const express = require("express");
 const router = express.Router();
 const Patient = require("../Model/Patient");
 const controleur = require("../Controlles/Patient");
+const isAuth = require("../middelwere/Pat_auth_jwt");
+
+const {
+  registerValidation,
+  signinValidation,
+  validation,
+} = require("../middelwere/Patient");
+
+router.post("/signup", registerValidation(), validation, controleur.Signup);
+router.post("/signin", signinValidation(), validation, controleur.SignIn);
+router.get("/current", isAuth, (req, res) => {
+  res.send(req.user);
+});
 
 //@POST methode
 //@DESC ADD CONTACT
 //PATH:http://localhost/api/contact/
 //PARAMS : req.body
 //access: public /private
-router.post("/", controleur.addPatient);
 //@methode GET
 //@DESC GET all CONTACTS
 //PATH:http://localhost/api/contact/

@@ -11,8 +11,21 @@ import ProfilePatient from "./components/ProfilePatient";
 import Rendevous from "./components/ADDRendevous";
 import Admin from "./components/Admin";
 import ListRendezvous from "./components/ListRendezvous";
+import PrivateRoute from "./components/Privateroute";
 import Doctors from "./components/Doctors";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { currentUser } from "./REduxJS/ACTION/Docteur";
+import Signin from "./components/Signin";
+import { currentPatient } from "./REduxJS/ACTION/Patient";
+
 const Ap = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(currentUser());
+    dispatch(currentPatient());
+  }, []);
   return (
     <div>
       <Switch>
@@ -25,17 +38,18 @@ const Ap = () => {
           path={["/addpatient", "/editpatient/:id"]}
           component={InscriptionPatient}
         />
-        <Route path="/profiledocteur/:id" component={ProfilDoc} />
-        <Route path="/detailPatient/:id" component={ProfilePatient} />
-        <Route
+        <PrivateRoute path="/profiledocteur" component={ProfilDoc} />
+        <Route path="/detailPatient" component={ProfilePatient} />
+        <PrivateRoute
           path={["/prendrerdv/:id", "/editrendezvoys/:id"]}
           component={Rendevous}
         />
-        <Route path="/ourdoc/:id" component={Doctors} />
+        <Route path="/ourdoc" component={Doctors} />
 
         <Route path="/rdvs/:id" component={ListRendezvous} />
 
         <Route path="/admin" component={Admin} />
+        <Route path="/signin" component={Signin} />
 
         <Route path="/*" component={Error} />
       </Switch>

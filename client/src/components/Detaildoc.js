@@ -1,19 +1,26 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import { Card, Icon, Button, Image, List } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-
+import Navbar from "./Navbar";
+import NavbarPa from "./NavbarPa";
 const DetailDocCard = ({ location }) => {
   const el = location.state.el;
+  // const el = useSelector((state) => state.doctorReducer.doctor);
+
   return (
     <div>
+      <NavbarPa />
+
       <Link to="/">
-        <button className="btn btn-custom btn-lg page-scroll"> DET.TN</button>
+        <button className="btn btn-custom btn-lg page-scroll"> </button>
       </Link>
 
       <div className="card">
         <Card style={{ width: "15rem" }}>
-          {el.img ? (
-            <Image src={el.image} alt="img" />
+          {el.images ? (
+            <Image src={el.images} alt="img" />
           ) : (
             <Image
               src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"

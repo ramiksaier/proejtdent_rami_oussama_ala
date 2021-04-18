@@ -2,23 +2,27 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { toggle_edit } from "../REduxJS/ACTION/Edit";
 import { Button, Icon } from "semantic-ui-react";
-
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getonepatient } from "../REduxJS/ACTION/Patient";
+import NavbarPa from "./NavbarPa";
 
 const ProfilePatient = ({ location }) => {
-  const user = location.state.user;
+  //const user = location.state.user;
+  const user = useSelector((state) => state.patientReducer.patient);
+
   const dispatch = useDispatch();
 
   return (
     <div className="backround">
+      <NavbarPa/>
       <div className="container emp-profile">
         <form method="post">
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
-                {!user.images ? (
+                {!user.image ? (
                   <img
                     src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"
                     alt="img"

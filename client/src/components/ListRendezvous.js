@@ -30,10 +30,7 @@ const ListRendezvous = ({ location }) => {
             </div>
             <div className="row">
               {!load ? (
-                rendezvous
-                  .filter((rendezvous) => docteur._id === rendezvous.id_doc)
-
-                  .map((el) => <RendezvousCard el={el} key={el._id} />)
+                rendezvous.map((el) => <RendezvousCard el={el} key={el._id} />)
               ) : (
                 <Spiner />
               )}{" "}
