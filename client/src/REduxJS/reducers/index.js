@@ -5,6 +5,7 @@ import roleReducer from "../reducers/Role";
 import patientReducer from "./Patient";
 import confirmReducer from "./Confirmation";
 import rendezvousReducer from "./Rendezvous";
+import adminReducer from "./Admin";
 
 const rootReducer = combineReducers({
   doctorReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   roleReducer,
   confirmReducer,
   patientReducer,
+  adminReducer,
   rendezvousReducer,
 });
 export default rootReducer;

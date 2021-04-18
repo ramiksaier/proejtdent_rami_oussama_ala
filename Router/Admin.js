@@ -3,13 +3,20 @@ const express = require("express");
 const router = express.Router();
 const Admin = require("../Model/Admin");
 const controleur = require("../Controlles/Admin");
-//docteur router
-//@POST methode
-//@DESC ADD CONTACT
-//PATH:http://l ocalhost/api/contact/
-//PARAMS : req.body
-//access: public /private
-router.post("/", controleur.addadmin);
+const isAuth = require("../middelwere/Admin_auth_jwt");
+
+const {
+  registerValidation,
+  signinValidation,
+  validation,
+} = require("../middelwere/Docteur");
+
+router.post("/signup", registerValidation(), validation, controleur.Signup);
+router.post("/signin", signinValidation(), validation, controleur.SignIn);
+router.get("/current", isAuth, (req, res) => {
+  res.send(req.user);
+});
+
 //@methode GET
 //@DESC GET all CONTACTS
 //PATH:http://localhost/api/contact/

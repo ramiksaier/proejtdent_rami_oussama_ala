@@ -69,7 +69,8 @@ export const login = (user, history) => async (dispatch) => {
     // );
     dispatch({ type: FAIL_DOCTORS, payload: error.response.data.errors });
   }
-};
+};   
+
 export const logout = () => {
   return {
     type: LOGOUT_DOCTOR,

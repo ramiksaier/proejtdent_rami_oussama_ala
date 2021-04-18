@@ -5,6 +5,7 @@ import AdminDoctcard from "./AdminDoctcard";
 import { Icon, Input } from "semantic-ui-react";
 
 import Spiner from "./Spiner";
+import NavbarAdmin from "./NavbarAdmin";
 const Admin = () => {
   const dispatch = useDispatch();
   const listDocteur = useSelector((state) => state.doctorReducer.listdoctors);
@@ -18,6 +19,7 @@ const Admin = () => {
 
   return (
     <div>
+      <NavbarAdmin />
       <div id="testimonials">
         <div className="container">
           <div className="section-title text-center">

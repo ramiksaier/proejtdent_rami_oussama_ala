@@ -18,13 +18,17 @@ import { useDispatch } from "react-redux";
 import { currentUser } from "./REduxJS/ACTION/Docteur";
 import Signin from "./components/Signin";
 import { currentPatient } from "./REduxJS/ACTION/Patient";
-
+import SigninADmin from "./components/SigninADmin";
+import { currentadmin } from "./REduxJS/ACTION/Admin";
+import PrivateRouteAdmin from "./components/PrivateRouteAdmin";
+import PrivateroutPati from "./components/PrivateroutPati";
 const Ap = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(currentUser());
     dispatch(currentPatient());
+    dispatch(currentadmin());
   }, []);
   return (
     <div>
@@ -39,7 +43,7 @@ const Ap = () => {
           component={InscriptionPatient}
         />
         <PrivateRoute path="/profiledocteur" component={ProfilDoc} />
-        <Route path="/detailPatient" component={ProfilePatient} />
+        <PrivateroutPati path="/detailPatient" component={ProfilePatient} />
         <PrivateRoute
           path={["/prendrerdv/:id", "/editrendezvoys/:id"]}
           component={Rendevous}
@@ -48,8 +52,9 @@ const Ap = () => {
 
         <Route path="/rdvs/:id" component={ListRendezvous} />
 
-        <Route path="/admin" component={Admin} />
+        <Route path="/admin" component={SigninADmin} />
         <Route path="/signin" component={Signin} />
+        <PrivateRouteAdmin path="/espaceadmin" component={Admin} />
 
         <Route path="/*" component={Error} />
       </Switch>

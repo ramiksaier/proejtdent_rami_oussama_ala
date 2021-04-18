@@ -20,12 +20,6 @@ const Navbar = () => {
               Logout
             </a>
           </Link>
-
-          <Link to="/ourdoc">
-            <a href="#" className="btn-area">
-              Our doctor
-            </a>
-          </Link>
         </div>
       ) : (
         <div className="btns">

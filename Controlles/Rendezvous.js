@@ -42,7 +42,7 @@ afficheOnerendezvous = async (req, res) => {
 };
 afficheOnerendezvousbyDoctorid = async (req, res) => {
   try {
-    const list = await Rendezvous.find({ id_doc: req.params._id });
+    const list = await Rendezvous.find({ id_doc: req.params.id_doc });
     res.send({ msg: "this is your rendezvous", list });
     console.log(list);
   } catch (error) {
