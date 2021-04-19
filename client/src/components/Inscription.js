@@ -45,7 +45,6 @@ const Inscription = ({ history }) => {
   return (
     <div>
       <header className="header">
-        {errors.length > 0 ? errors.map((el) => <Errors error={el} />) : null}
 
         <nav className="navbar navbar-expand-lg navbar-light py-3">
           <div className="container">

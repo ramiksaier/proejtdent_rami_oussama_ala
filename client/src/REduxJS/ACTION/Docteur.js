@@ -67,9 +67,10 @@ export const login = (user, history) => async (dispatch) => {
     //     alert(el.msg);
     //   }, 3000)
     // );
-    dispatch({ type: FAIL_DOCTORS, payload: error.response.data.errors });
+    dispatch({ type: FAIL_DOCTORS, payload: error.response });
+    console.log(error.response);
   }
-};   
+};
 
 export const logout = () => {
   return {

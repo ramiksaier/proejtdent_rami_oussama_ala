@@ -63,15 +63,15 @@ const doctorReducer = (state = initialstate, { type, payload }) => {
         isAuth: true,
         errors: [],
       };
-      case LOGOUT_DOCTOR:
-        localStorage.removeItem("token");
-        return {
-          ...state,
-          load: false,
-          errors: [],
-          doctor: {},
-          isAuth: false,
-        };
+    case LOGOUT_DOCTOR:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        load: false,
+        errors: [],
+        doctor: {},
+        isAuth: false,
+      };
     case "VIDE_ERRORS":
       return { ...state, errors: [] };
     default:

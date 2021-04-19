@@ -25,8 +25,6 @@ const Connect = (history) => {
   return (
     <div>
       <div className="iconlogo">
-        {errors.length > 0 ? errors.map((el) => <Errors error={el} />) : null}
-
         <Button icon="sign-in" />
       </div>
       <form>
