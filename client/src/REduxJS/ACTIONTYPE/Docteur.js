@@ -8,4 +8,4 @@ export const LOGOUT_DOCTOR = "LOGOUT_DOCTOR";
 export const LOGIN_DOCTEUR = "LOGIN_DOCTEUR";
 export const FAIL_DOC = "FAIL_DOC";
 export const CURRENT_DOCTEUR = "CURRENT_DOCTEUR";
-
+export const DELETE_DOCTOR = "DELETE_DOCTOR";

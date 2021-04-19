@@ -12,6 +12,7 @@ import "./Rendezvous.css";
 
 const Rendezvous = ({ location }) => {
   const docteur = location.state.el;
+  const Patient = useSelector((state) => state.patientReducer.patient);
 
   const [date, setDate] = useState();
   const inputProps = useDateInput({
@@ -32,7 +33,11 @@ const Rendezvous = ({ location }) => {
       ? setuser(rendezvousReducer)
       : setuser({
           id_doc: docteur._id,
-          id_pat: "",
+          id_pat:Patient._id,
+          firstName_doc:docteur.firstName,
+          lastName_doc:docteur.lastName,
+          firstName_pat: Patient.firstName ,
+          lastName_pat:Patient.lastName,
           jour: "",
           dateRen: "",
           description: "",

@@ -49,6 +49,17 @@ afficheOnerendezvousbyDoctorid = async (req, res) => {
     res.status(400).send("can not get the data");
   }
 };
+
+afficheOnerendezvousbyPatientid = async (req, res) => {
+  try {
+    const list = await Rendezvous.find({ id_pat: req.params.id_pat });
+    res.send({ msg: "this is your rendezvous", list });
+    console.log(list);
+  } catch (error) {
+    res.status(400).send("can not get the data");
+  }
+};
+
 Deleterendezvous = async (req, res) => {
   try {
     const result = await Rendezvous.deleteOne({ _id: req.params._id });
@@ -79,6 +90,7 @@ module.exports = controller = {
   adddrendezvous,
   afficherendezvous,
   afficheOnerendezvous,
+  afficheOnerendezvousbyPatientid,
   afficheOnerendezvousbyDoctorid,
   Deleterendezvous,
   updaterendezvous,

@@ -22,6 +22,8 @@ import SigninADmin from "./components/SigninADmin";
 import { currentadmin } from "./REduxJS/ACTION/Admin";
 import PrivateRouteAdmin from "./components/PrivateRouteAdmin";
 import PrivateroutPati from "./components/PrivateroutPati";
+import PrivateRoutePati from "./components/PrivateroutPati";
+import ListRendPa from "./components/ListRendPa";
 const Ap = () => {
   const dispatch = useDispatch();
 
@@ -44,7 +46,7 @@ const Ap = () => {
         />
         <PrivateRoute path="/profiledocteur" component={ProfilDoc} />
         <PrivateroutPati path="/detailPatient" component={ProfilePatient} />
-        <PrivateRoute
+        <PrivateroutPati
           path={["/prendrerdv/:id", "/editrendezvoys/:id"]}
           component={Rendevous}
         />
@@ -55,7 +57,7 @@ const Ap = () => {
         <Route path="/admin" component={SigninADmin} />
         <Route path="/signin" component={Signin} />
         <PrivateRouteAdmin path="/espaceadmin" component={Admin} />
-
+        <Route path="/myrend/:id" component={ListRendPa} />
         <Route path="/*" component={Error} />
       </Switch>
     </div>

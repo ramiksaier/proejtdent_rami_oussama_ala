@@ -16,7 +16,7 @@ const ProfilePatient = ({ location }) => {
 
   return (
     <div className="backround">
-      <NavbarPa/>
+      <NavbarPa />
       <div className="container emp-profile">
         <form method="post">
           <div className="row">
@@ -24,7 +24,7 @@ const ProfilePatient = ({ location }) => {
               <div className="profile-img">
                 {!user.image ? (
                   <img
-                    src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfng6A-DLxulu8eLWScu9tkL_kpI5KSLkF6g&usqp=CAU"
                     alt="img"
                     style={{
                       width: "400px",
@@ -99,7 +99,12 @@ const ProfilePatient = ({ location }) => {
               <br></br>
 
               <br></br>
-              <Link to="/rdvs">
+              <Link
+                to={{
+                  pathname: `/myrend/${user._id}`,
+                  state: { user: user },
+                }}
+              >
                 <Button color="twitter">
                   <Icon name="calendar check" /> My RDVs
                 </Button>

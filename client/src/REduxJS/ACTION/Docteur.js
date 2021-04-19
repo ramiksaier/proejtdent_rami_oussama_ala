@@ -94,3 +94,11 @@ export const videErrors = () => {
     type: "VIDE_ERRORS",
   };
 };
+export const Deletedocteur = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/docteur/${id}`);
+    dispatch(getdoctors());
+  } catch (error) {
+    dispatch({ type: FAIL_DOCTORS, payload: error.response });
+  }
+};

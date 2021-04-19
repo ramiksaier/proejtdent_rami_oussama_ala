@@ -5,6 +5,8 @@ import { Card, Icon, Button, Image, List } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import NavbarPa from "./NavbarPa";
+import ModalPhne from "./ModalPhne";
+import ModalEma from "./ModalEma";
 const DetailDocCard = ({ location }) => {
   const el = location.state.el;
   // const el = useSelector((state) => state.doctorReducer.doctor);
@@ -65,18 +67,13 @@ const DetailDocCard = ({ location }) => {
               <List.Item>
                 <List.Icon name="mail" />
                 <List.Content>
-                  <Button color="linkedin">
-                    <Icon name="mail" /> Envoyer un Email
-                  </Button>{" "}
+                  <ModalEma el={el} />
+                  <ModalPhne el={el} />
                 </List.Content>
               </List.Item>
               <List.Item>
                 <List.Icon name="phone" />
-                <List.Content>
-                  <Button color="linkedin">
-                    <Icon name="phone" /> Afficher le numero
-                  </Button>{" "}
-                </List.Content>
+                <List.Content></List.Content>
               </List.Item>
               <List.Item>
                 <List.Icon name="marker" />

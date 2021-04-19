@@ -20,6 +20,7 @@ router.get("/", controleur.afficherendezvous);
 //@params req.params._id
 router.get("/:_id", controleur.afficheOnerendezvous);
 router.get("/docteur/:id_doc", controleur.afficheOnerendezvousbyDoctorid);
+router.get("/patient/:id_pat", controleur.afficheOnerendezvousbyPatientid);
 
 //@methode DELETE
 //@DESC DELETE one CONTACT

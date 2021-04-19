@@ -1,19 +1,21 @@
-import react, { useEffect, useState } from "react";
+import React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getonerendezvous, getrendezvous } from "../REduxJS/ACTION/Rendezvous";
-import RendezvousCard from "./RendezvousCard";
+import { getrendezvousbypatient } from "../REduxJS/ACTION/Rendezvous";
 import Spiner from "./Spiner";
+import RendCard from "./RendCard";
 
-const ListRendezvous = ({ location, history }) => {
-  const docteur = location.state.user;
+const ListRendPa = ({ location, history }) => {
+  const patient = location.state.user;
   const dispatch = useDispatch();
   const rendezvous = useSelector(
     (state) => state.rendezvousReducer.listrendezvous
   );
   const load = useSelector((state) => state.doctorReducer.load);
   useEffect(() => {
-    dispatch(getrendezvous(docteur._id));
+    dispatch(getrendezvousbypatient(patient._id));
   }, []);
+
   return (
     <div id="testimonials">
       <div className="container">
@@ -23,14 +25,13 @@ const ListRendezvous = ({ location, history }) => {
               <p>
                 {" "}
                 <h3>
-                  welcome Dr {docteur.firstName} this is your rendezvous this
-                  week
+                  welcome {patient.firstName} Remember your rendevous please
                 </h3>
               </p>
             </div>
             <div className="row">
               {!load ? (
-                rendezvous.map((el) => <RendezvousCard el={el} key={el._id} />)
+                rendezvous.map((el) => <RendCard el={el} key={el._id} />)
               ) : (
                 <Spiner />
               )}{" "}
@@ -54,4 +55,4 @@ const ListRendezvous = ({ location, history }) => {
   );
 };
 
-export default ListRendezvous;
+export default ListRendPa;
