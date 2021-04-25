@@ -1,9 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Deleterendezvous, editrendezvous } from "../REduxJS/ACTION/Rendezvous";
+import {
+  Deleterendezvous,
+  editrendezvous,
+  getonerendezvous,
+} from "../REduxJS/ACTION/Rendezvous";
 import { Link } from "react-router-dom";
+import Edit from "./Edit";
+import { toggle_edit } from "../REduxJS/ACTION/Edit";
 
-const RendezvousCard = ({ el, docteur }) => {
+const RendezvousCard = ({ el }) => {
   const dispatch = useDispatch();
 
   return (
@@ -19,6 +25,18 @@ const RendezvousCard = ({ el, docteur }) => {
           <button onClick={() => dispatch(Deleterendezvous(el._id))}>
             delete{" "}
           </button>
+          <Link to={`/editrendezvoys/${el._id}`}>
+            <button
+              color="facebook"
+              onClick={() => {
+                dispatch(getonerendezvous(el._id));
+                dispatch(toggle_edit());
+              }}
+            >
+              Edit Profile
+            </button>
+          </Link>
+          <Edit el={el} />
         </div>
       </div>
     </div>

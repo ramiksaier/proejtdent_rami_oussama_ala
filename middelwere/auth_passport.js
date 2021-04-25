@@ -21,5 +21,5 @@ passport.use(
   })
 );
 
-module.exports = isAuth = () =>
+module.exports = isAuthdoc = () =>
   passport.authenticate("jwt", { session: false });

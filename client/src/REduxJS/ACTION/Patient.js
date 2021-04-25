@@ -65,7 +65,7 @@ export const loginP = (user, history) => async (dispatch) => {
     //     alert(el.msg);
     //   }, 3000)
     // );
-    dispatch({ type: FAIL_PATIENT, payload: error.response });
+    dispatch({ type: FAIL_PATIENT, payload: error.response.data.errors });
   }
 };
 export const logout = () => {

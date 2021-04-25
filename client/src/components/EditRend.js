@@ -10,8 +10,7 @@ import "react-nice-dates/build/style.css";
 import doctorReducer from "../REduxJS/reducers/Docteur";
 import "./Rendezvous.css";
 
-const Rendezvous = ({ location }) => {
-  const docteur = location.state.el;
+const EditRendezvous = () => {
   //const docteur = useSelector((state) => state.doctorReducer.doctor);
 
   const Patient = useSelector((state) => state.patientReducer.patient);
@@ -26,7 +25,7 @@ const Rendezvous = ({ location }) => {
 
   const [user, setuser] = useState({});
   const rendezvousReducer = useSelector(
-    (state) => state.rendezvousReducer.rendezvous
+    (state) => state.rendezvousReducer.user
   );
   const edit = useSelector((state) => state.editReducer.edit);
   const dispatch = useDispatch();
@@ -34,10 +33,8 @@ const Rendezvous = ({ location }) => {
     edit
       ? setuser(rendezvousReducer)
       : setuser({
-          id_doc: docteur._id,
           id_pat: Patient._id,
-          firstName_doc: docteur.firstName,
-          lastName_doc: docteur.lastName,
+
           firstName_pat: Patient.firstName,
           lastName_pat: Patient.lastName,
           jour: "",
@@ -55,28 +52,13 @@ const Rendezvous = ({ location }) => {
   };
   return (
     <div>
-      <h1>
-        {" "}
-        welcome please choose your time with Dr {docteur.firstName}{" "}
-        {docteur.lastName}
-      </h1>
-
-      <DatePickerCalendar date={date} onDateChange={setDate} locale={enGB} />
-
-      <p classename="inp">
-        The selected date is{" "}
-        {date && format(date, "dd MMM yyyy", { locale: enGB })}
-        <br /> please reteap manually :
-      </p>
       <input
         className="inp"
-        placeholder="jj/mm/aaaa"
         value={user.jour}
         name="jour"
         onChange={handelchange}
       />
 
-      <p>Docteur Name : {docteur.firstName}</p>
       <Form.Field>
         <select
           className="inp"
@@ -99,11 +81,9 @@ const Rendezvous = ({ location }) => {
         </select>
       </Form.Field>
       <Form.Field
-        readonly="readonly"
         control={TextArea}
         className="inp"
         label="Description writing by doctor:"
-        placeholder="descript your cas..."
         name="description"
         value={user.description}
         onChange={handelchange}
@@ -111,9 +91,8 @@ const Rendezvous = ({ location }) => {
       <Button onClick={handeldata}>
         <Link
           to={{
-            pathname: `/detailPatient/${user._id}`,
+            pathname: `/profiledocteur/${user._id}`,
             state: { user: user },
-            state: { docteur: docteur },
           }}
         >
           {edit ? "edit" : "save"}
@@ -122,4 +101,4 @@ const Rendezvous = ({ location }) => {
     </div>
   );
 };
-export default Rendezvous;
+export default EditRendezvous;

@@ -9,7 +9,7 @@ import { getonepatient } from "../REduxJS/ACTION/Patient";
 import NavbarPa from "./NavbarPa";
 
 const ProfilePatient = ({ location }) => {
-  //const user = location.state.user;
+  // const pat = location.state.user;
   const user = useSelector((state) => state.patientReducer.patient);
 
   const dispatch = useDispatch();
@@ -22,19 +22,15 @@ const ProfilePatient = ({ location }) => {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
-                {!user.image ? (
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfng6A-DLxulu8eLWScu9tkL_kpI5KSLkF6g&usqp=CAU"
-                    alt="img"
-                    style={{
-                      width: "400px",
-                      height: "400px",
-                      marginRight: "200px",
-                    }}
-                  />
-                ) : (
-                  <img src={user.images} alt="img" />
-                )}
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfng6A-DLxulu8eLWScu9tkL_kpI5KSLkF6g&usqp=CAU"
+                  alt="img"
+                  style={{
+                    width: "400px",
+                    height: "400px",
+                    marginRight: "200px",
+                  }}
+                />
               </div>
             </div>
             <div className="col-md-6">

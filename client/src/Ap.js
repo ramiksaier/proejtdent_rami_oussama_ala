@@ -24,6 +24,7 @@ import PrivateRouteAdmin from "./components/PrivateRouteAdmin";
 import PrivateroutPati from "./components/PrivateroutPati";
 import PrivateRoutePati from "./components/PrivateroutPati";
 import ListRendPa from "./components/ListRendPa";
+import EditRend from "./components/EditRend";
 const Ap = () => {
   const dispatch = useDispatch();
 
@@ -46,12 +47,9 @@ const Ap = () => {
         />
         <PrivateRoute path="/profiledocteur" component={ProfilDoc} />
         <PrivateroutPati path="/detailPatient" component={ProfilePatient} />
-        <PrivateroutPati
-          path={["/prendrerdv/:id", "/editrendezvoys/:id"]}
-          component={Rendevous}
-        />
+        <PrivateRoutePati path="/prendrerdv/:id" component={Rendevous} />
         <Route path="/ourdoc" component={Doctors} />
-
+        <PrivateRoute path="/editrendezvoys/:id" component={EditRend} />
         <Route path="/rdvs/:id" component={ListRendezvous} />
 
         <Route path="/admin" component={SigninADmin} />

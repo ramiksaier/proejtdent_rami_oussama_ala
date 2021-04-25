@@ -5,14 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggle_add } from "../REduxJS/ACTION/Edit";
 import { login, videErrors } from "../REduxJS/ACTION/Docteur";
 import Errors from "./Errors";
+import "./connect.css";
 import { loginP } from "../REduxJS/ACTION/Patient";
 
-const Connect = (history) => {
+const Connect = ({ history }) => {
   const dispatch = useDispatch();
   const [user, setuser] = useState({});
 
   const roleuser = useSelector((state) => state.roleReducer.role);
   const errors = useSelector((state) => state.doctorReducer.errors);
+  const errorsPatient = useSelector((state) => state.patientReducer.errors);
+
   const handleChange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
   };
@@ -23,7 +26,7 @@ const Connect = (history) => {
   }, []);
 
   return (
-    <div>
+    <div className="inscription">
       <div className="iconlogo">
         <Button icon="sign-in" />
       </div>
@@ -35,6 +38,19 @@ const Connect = (history) => {
           <Button circular color="linkedin" icon="linkedin" />
           <Button circular color="google plus" icon="google plus" />
         </div>
+        {roleuser === "doctor" ? (
+          <h3>
+            {errors.length > 0
+              ? errors.map((el) => <Errors error={el} />)
+              : null}
+          </h3>
+        ) : (
+          <h3>
+            {errorsPatient.length > 0
+              ? errorsPatient.map((el) => <Errors error={el} />)
+              : null}
+          </h3>
+        )}
         <div className="champ">
           <Input
             iconPosition="left"
@@ -51,6 +67,7 @@ const Connect = (history) => {
             name="password"
             onChange={handleChange}
             placeholder="Mot de passe"
+            type="password"
           >
             <Icon name="lock" />
             <input />
@@ -80,29 +97,31 @@ const Connect = (history) => {
             </Link>
           )}
         </div>
-        <Checkbox className="chek" label="Remenber me?" />
-        <div className="c1">
-          {roleuser === "doctor" ? (
-            <Link to="/adddoctor">
-              <a
-                href="Don't have an account? Sign Up"
-                onClick={() => dispatch(toggle_add())}
-              >
-                "Don't have an account? Sign Up"
-              </a>
-            </Link>
-          ) : (
-            <Link to="/addpatient">
-              <p>
+        <div classname="remember">
+          <Checkbox className="chek" label="Remenber me?" />
+          <div className="c1">
+            {roleuser === "doctor" ? (
+              <Link to="/adddoctor">
                 <a
                   href="Don't have an account? Sign Up"
                   onClick={() => dispatch(toggle_add())}
                 >
                   "Don't have an account? Sign Up"
                 </a>
-              </p>
-            </Link>
-          )}
+              </Link>
+            ) : (
+              <Link to="/addpatient">
+                <p>
+                  <a
+                    href="Don't have an account? Sign Up"
+                    onClick={() => dispatch(toggle_add())}
+                  >
+                    "Don't have an account? Sign Up"
+                  </a>
+                </p>
+              </Link>
+            )}
+          </div>
         </div>
       </form>
     </div>

@@ -26,7 +26,7 @@ Signup = async (req, res) => {
 
     if (FoundUser) {
       res.status(400).send({
-        errors: [{ msg: "user already exist email should be unique" }],
+        errors: [{ msg: "docteur already exist email should be unique" }],
       });
       return;
     }
@@ -47,7 +47,7 @@ Signup = async (req, res) => {
     });
 
     // hash the password
-    const hashedpassword = bcrypt.hashSync(password, salt);
+    const hashedpassword = await bcrypt.hashSync(password, salt);
     newDocteur.password = hashedpassword;
 
     // create a key using json webtoken
@@ -98,10 +98,9 @@ SignIn = async (req, res) => {
     );
 
     // send the details + a key
-    res.status(200).send({ msg: "auth success", user: searchUser, token });
+    res.status(200).send({ msg: "login success", user: searchUser, token });
   } catch (error) {
-    console.log(error);
-    res.status(400).send({ errors: [{ msg: "can not get the currentUser" }] });
+    res.status(400).send({ errors: [{ msg: "can not Sign In" }] });
   }
 };
 

@@ -1,0 +1,41 @@
+.btnc2 {
+    position: relative;
+    left: 5px;
+    bottom: 70px;
+  }
+  .btnconnexion {
+    display: flex;
+    justify-content: center;
+    left: 350px;
+  }
+  .btnc {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .c1 {
+    position: relative;
+    right: 82px;
+    top: -10px;
+  }
+  .c1 a {
+    color: black;
+  }
+  .icon {
+    display: flex;
+    justify-content: center;
+  }
+  .iconlogo {
+    display: flex;
+    justify-content: center;
+  }
+  .inscription {
+    top: 100px;
+    position: absolute;
+    left: 250px;
+    background-color: dodgerblue;
+  }
+  .remenber {
+    margin-left: -235px;
+    margin-top: -40px;
+  }

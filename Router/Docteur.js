@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Docteur = require("../Model/Docteur");
 const controleur = require("../Controlles/Docteur");
-const isAuth = require("../middelwere/auth_jwt");
+const isAuthdoc = require("../middelwere/auth_jwt");
 
 const {
   registerValidation,
@@ -13,7 +13,7 @@ const {
 
 router.post("/signup", registerValidation(), validation, controleur.Signup);
 router.post("/signin", signinValidation(), validation, controleur.SignIn);
-router.get("/current", isAuth, (req, res) => {
+router.get("/current", isAuthdoc, (req, res) => {
   res.send(req.user);
 });
 

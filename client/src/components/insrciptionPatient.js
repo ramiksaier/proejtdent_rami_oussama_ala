@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import { editpatient, postpatient } from "../REduxJS/ACTION/Patient";
 import "./Profildoctor.css";
-const InscriptionPatient = ({history}) => {
+const InscriptionPatient = ({ history }) => {
   const [user, setuser] = useState({});
   const userReducer = useSelector((state) => state.patientReducer.user);
   const edit = useSelector((state) => state.editReducer.edit);
@@ -28,7 +28,7 @@ const InscriptionPatient = ({history}) => {
   const handeldata = () => {
     edit
       ? dispatch(editpatient(userReducer._id, user))
-      : dispatch(postpatient(user,history));
+      : dispatch(postpatient(user, history));
   };
   const handelchange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
@@ -98,20 +98,22 @@ const InscriptionPatient = ({history}) => {
                 iconPosition="left"
                 type="email"
               />
-              <Form.Field>
-                <select
-                  id="sex"
-                  value={user.sex}
-                  onChange={handelchange}
-                  name="sex"
-                >
-                  <option value="femelle">femelle</option>
+              <div classnme="sexp">
+                <Form.Field>
+                  <select
+                    id="sex"
+                    value={user.sex}
+                    onChange={handelchange}
+                    name="sex"
+                  >
+                    <option value="femelle">femelle</option>
 
-                  <option value="male" selected>
-                    Male
-                  </option>
-                </select>
-              </Form.Field>
+                    <option value="male" selected>
+                      Male
+                    </option>
+                  </select>
+                </Form.Field>
+              </div>
             </Form.Group>
             <Form.Group unstackable widths={2}>
               <Form.Input

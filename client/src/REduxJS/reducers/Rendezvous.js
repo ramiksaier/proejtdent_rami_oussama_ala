@@ -12,7 +12,8 @@ const initialstate = {
   listrendezvous: [],
   error: null,
   load: false,
-  rendezvous: [],
+  user: {},
+  rendezvous: {},
 };
 //pure function
 const rendezvousReducer = (state = initialstate, { type, payload }) => {
@@ -25,7 +26,7 @@ const rendezvousReducer = (state = initialstate, { type, payload }) => {
     case FAIL_RENDEZVOUS:
       return { ...state, load: false, errors: payload };
     case GETONE_RENDEZVOUS:
-      return { ...state, load: false, rendezvous: payload.getone };
+      return { ...state, load: false, user: payload };
 
     default:
       return state;

@@ -28,6 +28,7 @@ export const getonedoctor = (id) => (dispatch) => {
         payload: res.data.getone,
       })
     )
+
     .catch((err) => console.log(err));
 };
 export const postdoctor = (newUser, history) => async (dispatch) => {
@@ -40,7 +41,7 @@ export const postdoctor = (newUser, history) => async (dispatch) => {
     console.log(result.data);
     history.push("/profiledocteur");
   } catch (error) {
-    console.log(error.response.data.errorrs);
+    console.log(error.response.data.errors);
     // error.response.data.errors.map((el) => alert(el.msg));
     dispatch({ type: FAIL_DOCTORS, payload: error.response.data.errors });
   }
@@ -62,19 +63,19 @@ export const login = (user, history) => async (dispatch) => {
 
     history.push("/profiledocteur");
   } catch (error) {
-    // error.response.data.errors.map((el) =>
-    //   setTimeout(function () {
-    //     alert(el.msg);
-    //   }, 3000)
-    // );
-    dispatch({ type: FAIL_DOCTORS, payload: error.response });
-    console.log(error.response);
+    dispatch({ type: FAIL_DOCTORS, payload: error.response.data.errors });
   }
 };
 
 export const logout = () => {
   return {
     type: LOGOUT_DOCTOR,
+  };
+};
+
+export const confirm = () => {
+  return {
+    type: CONF_DOCTOR,
   };
 };
 
@@ -97,6 +98,15 @@ export const videErrors = () => {
 export const Deletedocteur = (id) => async (dispatch) => {
   try {
     await axios.delete(`/api/docteur/${id}`);
+    dispatch(getdoctors());
+  } catch (error) {
+    dispatch({ type: FAIL_DOCTORS, payload: error.response });
+  }
+};
+
+export const editdocteurStat = (id, newdocteur) => async (dispatch) => {
+  try {
+    await axios.put(`/api/docteur/${id}`, newdocteur);
     dispatch(getdoctors());
   } catch (error) {
     dispatch({ type: FAIL_DOCTORS, payload: error.response });

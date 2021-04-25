@@ -3,9 +3,8 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Form, Input, TextArea, Button, Select, Icon } from "semantic-ui-react";
-import { editdocteur, postdoctor } from "../REduxJS/ACTION/Docteur";
+import { editdocteur, postdoctor, videErrors } from "../REduxJS/ACTION/Docteur";
 import { getonedoctor } from "../REduxJS/ACTION/Docteur";
-
 import "./Profildoctor.css";
 import Errors from "./Errors";
 const Inscription = ({ history }) => {
@@ -13,6 +12,7 @@ const Inscription = ({ history }) => {
   const userReducer = useSelector((state) => state.doctorReducer.user);
   const edit = useSelector((state) => state.editReducer.edit);
   const errors = useSelector((state) => state.doctorReducer.errors);
+  const st = useSelector((state) => state.confirmReducer.status);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -31,6 +31,9 @@ const Inscription = ({ history }) => {
           localisation: "",
           emplacementEducation: "",
         });
+    return () => {
+      dispatch(videErrors());
+    };
   }, [userReducer]);
   const handeldata = () => {
     edit
@@ -40,12 +43,10 @@ const Inscription = ({ history }) => {
   const handelchange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
   };
-  console.log(user);
 
   return (
     <div>
       <header className="header">
-
         <nav className="navbar navbar-expand-lg navbar-light py-3">
           <div className="container">
             {/* Navbar Brand */}
@@ -60,6 +61,9 @@ const Inscription = ({ history }) => {
           {/* For Demo Purpose */}
           <div className="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <div className="rami">
+              {errors.length > 0
+                ? errors.map((el) => <Errors error={el} />)
+                : null}
               <img
                 src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg"
                 alt

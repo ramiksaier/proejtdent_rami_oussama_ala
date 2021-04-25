@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 import { videErrors } from "../REduxJS/ACTION/Admin";
 
 import { Icon, Input, Button, Checkbox } from "semantic-ui-react";
+import Errors from "./Errors";
 
 const SigninADmin = ({ history }) => {
   const dispatch = useDispatch();
   const [user, setuser] = useState({});
 
-  const errors = useSelector((state) => state.doctorReducer.errors);
+  const errors = useSelector((state) => state.adminReducer.errors);
   const isAuth = useSelector((state) => state.adminReducer.isAuth);
 
   const handleChange = (e) => {
@@ -29,12 +30,16 @@ const SigninADmin = ({ history }) => {
     <div>
       <form>
         <h1 className="login">Login</h1>
+
         <div className="icon">
           <Button circular color="facebook" icon="facebook" />
           <Button circular color="twitter" icon="twitter" />
           <Button circular color="linkedin" icon="linkedin" />
           <Button circular color="google plus" icon="google plus" />
         </div>
+        <h3 className="login">
+          {errors.length > 0 ? errors.map((el) => <Errors error={el} />) : null}
+        </h3>
         <div className="champ">
           <Input
             iconPosition="left"
@@ -65,7 +70,6 @@ const SigninADmin = ({ history }) => {
               onClick={() => dispatch(loginAdmin(user, history))}
             ></Button>
           </Link>
-          {isAuth ? alert("login sucess") : null}
           <Icon name="redo alternate" /> Connexion
         </div>
       </form>

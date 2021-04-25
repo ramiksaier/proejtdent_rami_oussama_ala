@@ -8,7 +8,7 @@ const PrivateRoutePati = ({ component: Component, ...rest }) => {
   if (isAuth) {
     return <Route component={Component} {...rest} />;
   }
-  return <Redirect to="/signin" />;
+  return <Redirect to="/connectpatient" />;
 };
 
 export default PrivateRoutePati;

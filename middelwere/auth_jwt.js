@@ -1,23 +1,23 @@
 const jwt = require("jsonwebtoken");
 const Docteur = require("../Model/Docteur");
 
-const isAuth = async (req, res, next) => {
+const isAuthdoc = async (req, res, next) => {
   try {
     // test token
     const token = req.headers["authorization"];
     // if the token is undefined =>
     if (!token) {
-      return res.status(400).send({ errors: [{ msg: "Unauthorized" }] });
+      return res.status(401).send({ errors: [{ msg: "Not authorized" }] });
     }
     // get the id from the token
     const decoded = await jwt.verify(token, process.env.SECRET_KEY);
 
     // search the user
-    const user = await Docteur.findById(decoded.id).select("-password");
+    const user = await Docteur.findOne({ _id: decoded.id });
 
     // send not authorisation IF NOT USER
     if (!user) {
-      return res.status(400).send({ errors: [{ msg: "Unauthorized" }] });
+      return res.status(400).send({ errors: [{ msg: "Not authorized" }] });
     }
 
     // if user exist
@@ -25,8 +25,8 @@ const isAuth = async (req, res, next) => {
 
     next();
   } catch (error) {
-    return res.status(500).send({ errors: [{ msg: "Unauthorized" }] });
+    return res.status(500).send({ errors: [{ msg: "Not authorized" }] });
   }
 };
 
-module.exports = isAuth;
+module.exports = isAuthdoc;

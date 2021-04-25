@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { confirmer_docteur } from "../REduxJS/ACTION/Confirmation";
-import { Deletedocteur } from "../REduxJS/ACTION/Docteur";
+import { confirm, Deletedocteur, editdocteur } from "../REduxJS/ACTION/Docteur";
+import { useSelector } from "react-redux";
 
 const AdminDoctcard = ({ el }) => {
   const dispatch = useDispatch();
+
+
 
   return (
     <div>
@@ -60,6 +63,11 @@ const AdminDoctcard = ({ el }) => {
             className="btn btn-custom btn-lg page-scroll"
           >
             delete doctor
+          </button>
+          <button
+            className="btn btn-custom btn-lg page-scroll"
+          >
+            confirmer doctor
           </button>
         </div>
       </div>

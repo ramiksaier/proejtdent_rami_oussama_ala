@@ -22,19 +22,16 @@ const ProfilDoctor = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
-                {!user.images ? (
-                  <img
-                    src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"
-                    alt="imgaag"
-                    style={{
-                      width: "400px",
-                      height: "400px",
-                      marginRight: "200px",
-                    }}
-                  />
-                ) : (
-                  <img src={user.images} alt="img" />
-                )}
+                <img
+                  src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"
+                  alt="imgaag"
+                  style={{
+                    width: "400px",
+                    height: "400px",
+                    marginRight: "200px",
+                  }}
+                />
+                
               </div>
             </div>
             <div className="col-md-6">

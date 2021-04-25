@@ -1,16 +1,8 @@
 const adddrendezvous = async (req, res) => {
   try {
-    if (!req.body.dateRen || !req.body.jour) {
-      res.send("date debut and date fin are required checked again please");
-      return;
-    }
-
     const newrendezvous = new Rendezvous({ ...req.body });
     const doct = await Rendezvous.findOne({ dateRen: req.body.dateRen });
-    if (doct) {
-      res.send("rendez vous already exist");
-      return;
-    }
+    
 
     const response = await newrendezvous.save();
 

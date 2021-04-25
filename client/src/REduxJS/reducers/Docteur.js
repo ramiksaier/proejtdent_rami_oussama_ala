@@ -15,14 +15,15 @@ import {
 //initialstate
 const initialstate = {
   listdoctors: [],
-  error: null,
   load: false,
   user: {},
-  doctor: {},
+  doctor: null,
   isAuth: false,
   errors: [],
+  status: false,
 };
 //pure function
+
 const doctorReducer = (state = initialstate, { type, payload }) => {
   switch (type) {
     case LOAD_DOCTORS:
@@ -37,12 +38,18 @@ const doctorReducer = (state = initialstate, { type, payload }) => {
         errors: [],
       };
     case GET_DOCTORS:
-      return { ...state, load: false, listdoctors: payload.list };
+      return {
+        ...state,
+        load: false,
+        listdoctors: payload.list,
+        status: payload.list.status,
+      };
 
     case FAIL_DOCTORS:
       return { ...state, load: false, errors: payload };
     case GETONE_DOCTORS:
       return { ...state, user: payload };
+
     case CONF_DOCTOR:
       return { ...state, status: true };
 

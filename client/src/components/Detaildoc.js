@@ -68,6 +68,8 @@ const DetailDocCard = ({ location }) => {
                 <List.Icon name="mail" />
                 <List.Content>
                   <ModalEma el={el} />
+                  <br></br>
+                  <br></br>
                   <ModalPhne el={el} />
                 </List.Content>
               </List.Item>
