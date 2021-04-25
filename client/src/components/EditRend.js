@@ -10,7 +10,7 @@ import "react-nice-dates/build/style.css";
 import doctorReducer from "../REduxJS/reducers/Docteur";
 import "./Rendezvous.css";
 
-const EditRendezvous = () => {
+const EditRendezvous = ({ us }) => {
   //const docteur = useSelector((state) => state.doctorReducer.doctor);
 
   const Patient = useSelector((state) => state.patientReducer.patient);
@@ -28,36 +28,18 @@ const EditRendezvous = () => {
     (state) => state.rendezvousReducer.user
   );
   const edit = useSelector((state) => state.editReducer.edit);
+
   const dispatch = useDispatch();
   useEffect(() => {
-    edit
-      ? setuser(rendezvousReducer)
-      : setuser({
-          id_pat: Patient._id,
-
-          firstName_pat: Patient.firstName,
-          lastName_pat: Patient.lastName,
-          jour: "",
-          dateRen: "",
-          description: "",
-        });
+    setuser(rendezvousReducer);
   }, [rendezvousReducer]);
-  const handeldata = () => {
-    edit
-      ? dispatch(editrendezvous(rendezvousReducer._id, user))
-      : dispatch(postrendezvous(user));
-  };
+
   const handelchange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
   };
   return (
     <div>
-      <input
-        className="inp"
-        value={user.jour}
-        name="jour"
-        onChange={handelchange}
-      />
+      <input name="jour" onChange={handelchange} value={user.jour} />
 
       <Form.Field>
         <select
@@ -85,17 +67,18 @@ const EditRendezvous = () => {
         className="inp"
         label="Description writing by doctor:"
         name="description"
-        value={user.description}
         onChange={handelchange}
       />
-      <Button onClick={handeldata}>
+      <Button
+        onClick={() => dispatch(editrendezvous(rendezvousReducer.id_doc, user))}
+      >
         <Link
           to={{
-            pathname: `/profiledocteur/${user._id}`,
+            pathname: `/profiledocteur/`,
             state: { user: user },
           }}
         >
-          {edit ? "edit" : "save"}
+          edit
         </Link>
       </Button>
     </div>

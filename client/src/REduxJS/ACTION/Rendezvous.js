@@ -28,7 +28,7 @@ export const getrendezvousbypatient = (id) => async (dispatch) => {
 
 export const getonerendezvous = (id) => (dispatch) => {
   axios
-    .get(`/api/rendezvous/${id}`)
+    .get(`/api/rendezvous/docteur/${id}`)
     .then((res) =>
       dispatch({
         type: GETONE_RENDEZVOUS,

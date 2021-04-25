@@ -11,7 +11,7 @@ const ModalExampleModal = ({ el }) => {
   const [user, setuser] = useState({});
 
   const rendezvousReducer = useSelector(
-    (state) => state.rendezvousReducer.rendezvous
+    (state) => state.rendezvousReducer.user
   );
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const ModalExampleModal = ({ el }) => {
         />
         <Modal.Description>
           <Header>Default Profile Image</Header>
-          <input value={user.jour} name="jour" onChange={handelchange} />
+          <input value={el.jour} name="jour" onChange={handelchange} />
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
