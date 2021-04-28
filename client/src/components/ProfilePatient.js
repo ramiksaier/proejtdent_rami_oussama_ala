@@ -9,7 +9,7 @@ import { getonepatient } from "../REduxJS/ACTION/Patient";
 import NavbarPa from "./NavbarPa";
 
 const ProfilePatient = ({ location }) => {
-  // const pat = location.state.user;
+  // const user = location.state.user;
   const user = useSelector((state) => state.patientReducer.patient);
 
   const dispatch = useDispatch();
@@ -26,20 +26,20 @@ const ProfilePatient = ({ location }) => {
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfng6A-DLxulu8eLWScu9tkL_kpI5KSLkF6g&usqp=CAU"
                   alt="img"
                   style={{
-                    width: "400px",
-                    height: "400px",
-                    marginRight: "200px",
+                    width: "200px",
+                    height: "200px",
+                    marginLeft: "-20px",
                   }}
                 />
               </div>
             </div>
             <div className="col-md-6">
               <div className="profile-head">
-                <h5>
+                <h5 className="h2title">
                   {user.firstName} <span></span>
                   {user.lastName}
                 </h5>
-                <h6>{user.sex}</h6>
+                <h6 className=" h2title">{user.age} ans </h6>
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item">
                     <a
@@ -54,25 +54,13 @@ const ProfilePatient = ({ location }) => {
                       About
                     </a>
                   </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      id="profile-tab"
-                      data-toggle="tab"
-                      role="tab"
-                      href="#profile"
-                      aria-controls="profile"
-                      aria-selected="false"
-                    >
-                      Timeline
-                    </a>
-                  </li>
                 </ul>
               </div>
             </div>
             <div className="col-md-2">
               <Link to={`/editpatient/${user._id}`}>
                 <Button
+                  className="bt"
                   color="facebook"
                   onClick={() => {
                     dispatch(getonepatient(user._id));
@@ -88,7 +76,7 @@ const ProfilePatient = ({ location }) => {
                   state: { patient: user },
                 }}
               >
-                <Button color="facebook">
+                <Button className="bt" color="facebook">
                   <Icon name="edit" /> looking for doctor???
                 </Button>
               </Link>
@@ -120,42 +108,42 @@ const ProfilePatient = ({ location }) => {
                 >
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Name</label>
+                      <label className=" h2title">Name</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.firstName}</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Email</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>{user.email}</p>
+                      <p className=" h2title">{user.firstName}</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Phone</label>
+                      <label className=" h2title">Email</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.Phone}</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Age</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>{user.age}</p>
+                      <p className=" h2title">{user.email}</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>adress</label>
+                      <label className=" h2title">Phone</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.adress}</p>
+                      <p className=" h2title">{user.Phone}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <label className=" h2title">Age</label>
+                    </div>
+                    <div className="col-md-6">
+                      <p className=" h2title">{user.age}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <label className=" h2title">adress</label>
+                    </div>
+                    <div className="col-md-6">
+                      <p className=" h2title">{user.adress}</p>
 
                       <br />
                     </div>

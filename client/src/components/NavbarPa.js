@@ -14,16 +14,22 @@ const Navbar = () => {
       </Link>
       {isAuth ? (
         <div>
-          <Link to="/" onClick={() => dispatch(logout())}>
+          <Link to="/detailPatient">
             {" "}
             <a href="#" className="btn-area">
-              Logout
+              My Profile
             </a>
           </Link>
 
           <Link to="/ourdoc">
             <a href="#" className="btn-area">
               Our doctor
+            </a>
+          </Link>
+          <Link to="/" onClick={() => dispatch(logout())}>
+            {" "}
+            <a href="#" className="btn-area">
+              Logout
             </a>
           </Link>
         </div>

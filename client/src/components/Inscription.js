@@ -7,6 +7,7 @@ import { editdocteur, postdoctor, videErrors } from "../REduxJS/ACTION/Docteur";
 import { getonedoctor } from "../REduxJS/ACTION/Docteur";
 import "./Profildoctor.css";
 import Errors from "./Errors";
+import { isYesterday } from "date-fns";
 const Inscription = ({ history }) => {
   const [user, setuser] = useState({});
   const userReducer = useSelector((state) => state.doctorReducer.user);
@@ -29,6 +30,7 @@ const Inscription = ({ history }) => {
           password: "",
           qualification: "",
           localisation: "",
+          pass: "",
           emplacementEducation: "",
         });
     return () => {
@@ -150,13 +152,16 @@ const Inscription = ({ history }) => {
                 iconPosition="left"
                 type="password"
               />
+
               <Form.Input
                 label="Canfirmation de Mot de passe:"
                 placeholder="Canfirmation de Mot de passe"
                 icon="lock"
-                value="conf"
+                value={user.pass}
+                name="pass"
                 iconPosition="left"
                 type="password"
+                onChange={handelchange}
               />
             </Form.Group>
             <Form.Group unstackable widths={2}>

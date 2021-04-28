@@ -20,6 +20,12 @@ const Navbar = () => {
               Logout
             </a>
           </Link>
+          <Link to="/profiledocteur">
+            {" "}
+            <a href="#" className="btn-area">
+              My profile
+            </a>
+          </Link>
         </div>
       ) : (
         <div className="btns">

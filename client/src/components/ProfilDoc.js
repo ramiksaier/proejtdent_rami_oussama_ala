@@ -26,21 +26,20 @@ const ProfilDoctor = () => {
                   src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"
                   alt="imgaag"
                   style={{
-                    width: "400px",
-                    height: "400px",
-                    marginRight: "200px",
+                    width: "200px",
+                    height: "200px",
+                    marginLeft: "-20px",
                   }}
                 />
-                
               </div>
             </div>
             <div className="col-md-6">
               <div className="profile-head">
-                <h5>
+                <h5 className=" h2title">
                   {user.firstName}
                   {user.lastName}
                 </h5>
-                <h6>{user.qualification}</h6>
+                <h6 className=" h2title">{user.qualification}</h6>
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item">
                     <a
@@ -55,25 +54,13 @@ const ProfilDoctor = () => {
                       About
                     </a>
                   </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      id="profile-tab"
-                      data-toggle="tab"
-                      role="tab"
-                      href="#profile"
-                      aria-controls="profile"
-                      aria-selected="false"
-                    >
-                      Timeline
-                    </a>
-                  </li>
                 </ul>
               </div>
             </div>
             <div className="col-md-2">
               <Link to={`/edit/:id`}>
                 <Button
+                  className="bt"
                   color="facebook"
                   onClick={() => {
                     dispatch(getonedoctor(user._id));
@@ -84,11 +71,7 @@ const ProfilDoctor = () => {
                 </Button>
               </Link>
               <br></br>
-              <Link>
-                <Button color="google plus">
-                  <Icon name="user" /> My Patients
-                </Button>
-              </Link>
+
               <br></br>
               <Link
                 to={{
@@ -106,7 +89,7 @@ const ProfilDoctor = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-work">
-                <p>Actes et soins</p>
+                <p className=" h2title">Actes et soins</p>
                 <a href="#">Prothèse dentaire</a>
                 <br />
                 <a href="#">Détartrage sous gingivale</a>
@@ -126,42 +109,42 @@ const ProfilDoctor = () => {
                 >
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Name</label>
+                      <label className=" h2title">Name</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.firstName}</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Email</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>{user.email}</p>
+                      <p className=" h2title">{user.firstName}</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Phone</label>
+                      <label className=" h2title">Email</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.Phone}</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Cabinet Phone</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>{user.PhoneCab}</p>
+                      <p className=" h2title">{user.email}</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Profession</label>
+                      <label className=" h2title">Phone</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.qualification}</p>
+                      <p className=" h2title">{user.Phone}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <label className=" h2title">Cabinet Phone</label>
+                    </div>
+                    <div className="col-md-6">
+                      <p className=" h2title">{user.PhoneCab}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <label className=" h2title">Profession</label>
+                    </div>
+                    <div className="col-md-6">
+                      <p className=" h2title">{user.qualification}</p>
                     </div>
                   </div>
                 </div>
@@ -173,47 +156,40 @@ const ProfilDoctor = () => {
                 >
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Experience</label>
+                      <label className=" h2title">Experience</label>
                     </div>
                     <div className="col-md-6">
-                      <p>Expert</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Hourly Rate</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>10$/hr</p>
+                      <p className=" h2title">Expert</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Total Projects</label>
+                      <label className=" h2title">Hourly Rate</label>
                     </div>
                     <div className="col-md-6">
-                      <p>230</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>English Level</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Expert</p>
+                      <p className=" h2title">50 D/hr</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Availability</label>
+                      <label className=" h2title">Years of experiences</label>
                     </div>
                     <div className="col-md-6">
-                      <p>6 months</p>
+                      <p className=" h2title">20</p>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-md-6">
+                      <label className=" h2title">Availability</label>
+                    </div>
+                    <div className="col-md-6">
+                      <p className=" h2title">6 months</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-12">
-                      <label>Your Bio</label>
+                      <label className=" h2title">Your Bio</label>
                       <br />
                     </div>
                   </div>

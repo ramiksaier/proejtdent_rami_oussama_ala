@@ -26,7 +26,7 @@ const rendezvousReducer = (state = initialstate, { type, payload }) => {
     case FAIL_RENDEZVOUS:
       return { ...state, load: false, errors: payload };
     case GETONE_RENDEZVOUS:
-      return { ...state,  user: payload };
+      return { ...state, user: payload };
 
     default:
       return state;

@@ -7,8 +7,6 @@ import { useSelector } from "react-redux";
 const AdminDoctcard = ({ el }) => {
   const dispatch = useDispatch();
 
-
-
   return (
     <div>
       <div className="col-md-4">
@@ -57,17 +55,21 @@ const AdminDoctcard = ({ el }) => {
             />{" "}
             {el.emplacementEducation}{" "}
           </div>
-
+          <br></br>
           <button
             onClick={() => dispatch(Deletedocteur(el._id))}
             className="btn btn-custom btn-lg page-scroll"
           >
             delete doctor
           </button>
+          <br></br>
           <button
+            onClick={() =>
+              dispatch(editdocteur(el._id, { status: !el.status }))
+            }
             className="btn btn-custom btn-lg page-scroll"
           >
-            confirmer doctor
+            COnfirm Doctor
           </button>
         </div>
       </div>

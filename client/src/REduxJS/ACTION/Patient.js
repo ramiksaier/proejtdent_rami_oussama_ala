@@ -40,7 +40,7 @@ export const postpatient = (newUser, history) => async (dispatch) => {
     history.push("/detailPatient");
   } catch (error) {
     // error.response.data.errors.map((el) => alert(el.msg));
-    dispatch({ type: FAIL_PATIENT, payload: error.response });
+    dispatch({ type: FAIL_PATIENT, payload: error.response.data.errors });
   }
 };
 export const editpatient = (id, newpatient) => async (dispatch) => {

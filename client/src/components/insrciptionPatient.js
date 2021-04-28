@@ -3,12 +3,19 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
-import { editpatient, postpatient } from "../REduxJS/ACTION/Patient";
+import {
+  editpatient,
+  postpatient,
+  videErrors,
+} from "../REduxJS/ACTION/Patient";
+import Errors from "./Errors";
 import "./Profildoctor.css";
 const InscriptionPatient = ({ history }) => {
   const [user, setuser] = useState({});
   const userReducer = useSelector((state) => state.patientReducer.user);
   const edit = useSelector((state) => state.editReducer.edit);
+  const errors = useSelector((state) => state.patientReducer.errors);
+
   const dispatch = useDispatch();
   useEffect(() => {
     edit
@@ -24,6 +31,9 @@ const InscriptionPatient = ({ history }) => {
           password: "",
           adress: "",
         });
+    return () => {
+      dispatch(videErrors());
+    };
   }, [userReducer]);
   const handeldata = () => {
     edit
@@ -52,6 +62,9 @@ const InscriptionPatient = ({ history }) => {
           {/* For Demo Purpose */}
           <div className="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <div className="rami">
+              {errors.length > 0
+                ? errors.map((el) => <Errors error={el} />)
+                : null}
               <img
                 src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg"
                 alt
@@ -197,16 +210,16 @@ const InscriptionPatient = ({ history }) => {
             </div>
           </Form>
           <div className="enregister">
-            <Button negative onClick={handeldata}>
-              <Link
-                to={{
-                  pathname: `/detailPatient/`,
-                  state: { user: user },
-                }}
-              >
+            <Link
+              to={{
+                pathname: `/detailPatient/${user._id}`,
+                state: { user: user },
+              }}
+            >
+              <Button negative onClick={handeldata}>
                 {edit ? "edit" : "save"}
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

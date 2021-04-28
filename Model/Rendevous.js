@@ -4,6 +4,7 @@ const schema = mongoose.Schema;
 const rendezvousSchema = new schema({
   id_doc: String,
   id_pat: String,
+  status: false,
   firstName_doc: String,
   lastName_doc: String,
   firstName_pat: String,

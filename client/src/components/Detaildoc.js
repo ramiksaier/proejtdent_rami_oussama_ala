@@ -14,36 +14,31 @@ const DetailDocCard = ({ location }) => {
   return (
     <div>
       <NavbarPa />
-
-      <Link to="/">
-        <button className="btn btn-custom btn-lg page-scroll"> </button>
-      </Link>
-
       <div className="card">
         <Card style={{ width: "15rem" }}>
-          {el.images ? (
-            <Image src={el.images} alt="img" />
-          ) : (
-            <Image
-              src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"
-              alt="img"
-            />
-          )}
+          <Image
+            src="https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg"
+            alt="img"
+          />
           <Card.Content>
             <Card.Header>
               <span />
-              {el.firstName} {el.lastName} <span />
+              <h3 className=" h2title">
+                {" "}
+                {el.firstName} {el.lastName}
+              </h3>{" "}
+              <span />
             </Card.Header>
             <Card.Meta>
               <br></br>
               <span className="date">
-                <h3>{el.emplacementEducation}</h3>
+                <h3 className=" h2title">{el.emplacementEducation}</h3>
               </span>
             </Card.Meta>
             <Card.Meta>
               <br></br>
               <span className="date">
-                <h3>
+                <h3 className=" h2title">
                   <span></span> {el.age} ans
                 </h3>
               </span>
@@ -65,33 +60,27 @@ const DetailDocCard = ({ location }) => {
           <Card.Content>
             <List>
               <List.Item>
-                <List.Icon name="mail" />
                 <List.Content>
                   <ModalEma el={el} />
                   <br></br>
                   <br></br>
-                  <ModalPhne el={el} />
                 </List.Content>
               </List.Item>
               <List.Item>
-                <List.Icon name="phone" />
                 <List.Content></List.Content>
               </List.Item>
-              <List.Item>
-                <List.Icon name="marker" />
-                <List.Content>{el.localisation}</List.Content>
-              </List.Item>
+              <List.Item></List.Item>
             </List>
           </Card.Content>
         </Card>
       </div>
       <div className="card3">
-        <Card style={{ width: "50rem" }}>
+        <Card style={{ width: "30rem" }}>
           <h1 className="titre"> Présentation:</h1>
           <Card.Content>
-            <h4>Qualification professionnelle:</h4>
-            <p> {el.qualification} </p>
-            <h4>
+            <h4 className=" h2title">Qualification professionnelle:</h4>
+            <p className=" h2title"> {el.qualification} </p>
+            <h4 className=" h2title">
               Assurance maladie:
               <img src="../img/user/cnam.jpg" style={{ width: "50px" }}></img>
             </h4>
@@ -99,18 +88,27 @@ const DetailDocCard = ({ location }) => {
         </Card>
       </div>
       <div className="card4">
-        <Card style={{ width: "50rem" }}>
+        <Card style={{ width: "30rem" }}>
           <h1 className="card4t"> Horaires d'ouverture:</h1>
           <Card.Content>
             <div className="timeimg">
-              <img src="../img/user/time.png" alt="img" />
+              <img
+                src="../img/user/time.png"
+                alt="img"
+                style={{ width: "70px" }}
+              />
             </div>
             <div className="time">
-              <h6>Lundi</h6> <p>09:00/12:00 - 14:00/18:00</p>
-              <h6>Mardi</h6> <p>09:00/12:00 - 14:00/18:00</p>
-              <h6>Mercrodi</h6> <p>09:00/12:00 - 14/00:18:00</p>
-              <h6>Jeudi</h6> <p>09:00/12:00 - 14:00/18:00</p>
-              <h6>Vendredi</h6> <p>09:00/12:00 - 14:00/18:00</p>
+              <h6 className=" h2title">Lundi</h6>{" "}
+              <p className=" h2title">09:00/12:00 - 14:00/18:00</p>
+              <h6 className=" h2title">Mardi</h6>{" "}
+              <p className=" h2title">09:00/12:00 - 14:00/18:00</p>
+              <h6 className=" h2title">Mercrodi</h6>{" "}
+              <p className=" h2title">09:00/12:00 - 14/00:18:00</p>
+              <h6 className=" h2title">Jeudi</h6>{" "}
+              <p className=" h2title">09:00/12:00 - 14:00/18:00</p>
+              <h6 className=" h2title">Vendredi</h6>{" "}
+              <p className=" h2title">09:00/12:00 - 14:00/18:00</p>
             </div>
           </Card.Content>
         </Card>

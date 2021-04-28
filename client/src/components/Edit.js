@@ -29,7 +29,7 @@ const ModalExampleModal = ({ el }) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Show Modal</Button>}
+      trigger={<Button>ADD description</Button>}
     >
       <Modal.Header>Select a Photo</Modal.Header>
       <Modal.Content image>
@@ -40,7 +40,7 @@ const ModalExampleModal = ({ el }) => {
         />
         <Modal.Description>
           <Header>Default Profile Image</Header>
-          <input value={el.jour} name="jour" onChange={handelchange} />
+          <input value={el.description} name="jour" onChange={handelchange} />
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

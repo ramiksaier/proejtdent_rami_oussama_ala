@@ -14,7 +14,6 @@ import {
 //initialstate
 const initialstate = {
   listpatient: [],
-  error: null,
   load: false,
   user: {},
   patient: {},

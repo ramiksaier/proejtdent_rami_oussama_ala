@@ -10,6 +10,7 @@ Signup = async (req, res) => {
       lastName,
       image,
       age,
+      status,
       email,
       adress,
       sex,
@@ -32,6 +33,7 @@ Signup = async (req, res) => {
       image,
       age,
       adress,
+      status,
       sex,
       email,
       Phone,
@@ -39,7 +41,7 @@ Signup = async (req, res) => {
     });
 
     // hash the password
-    const hashedpassword = bcrypt.hashSync(password, salt);
+    const hashedpassword = await bcrypt.hashSync(password, salt);
     newPatient.password = hashedpassword;
 
     // create a key using json webtoken

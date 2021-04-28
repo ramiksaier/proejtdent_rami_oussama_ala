@@ -53,6 +53,7 @@ const SigninADmin = ({ history }) => {
           <br></br>
           <Input
             iconPosition="left"
+            type ="password"
             name="password"
             onChange={handleChange}
             placeholder="Mot de passe"
@@ -68,9 +69,11 @@ const SigninADmin = ({ history }) => {
               className="btnc"
               color="facebook"
               onClick={() => dispatch(loginAdmin(user, history))}
-            ></Button>
+            >
+              {" "}
+              <Icon name="redo alternate" /> Connexion
+            </Button>
           </Link>
-          <Icon name="redo alternate" /> Connexion
         </div>
       </form>
     </div>

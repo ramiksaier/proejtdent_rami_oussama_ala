@@ -28,7 +28,7 @@ export const getrendezvousbypatient = (id) => async (dispatch) => {
 
 export const getonerendezvous = (id) => (dispatch) => {
   axios
-    .get(`/api/rendezvous/docteur/${id}`)
+    .get(`/api/rendezvous/${id}`)
     .then((res) =>
       dispatch({
         type: GETONE_RENDEZVOUS,
@@ -49,6 +49,7 @@ export const postrendezvous = (newrendezvous) => async (dispatch) => {
 export const editrendezvous = (id, newrendezvous) => async (dispatch) => {
   try {
     await axios.put(`/api/rendezvous/${id}`, newrendezvous);
+    dispatch(getrendezvousbypatient(id));
   } catch (error) {
     dispatch({ type: FAIL_RENDEZVOUS, payload: error.response });
   }
