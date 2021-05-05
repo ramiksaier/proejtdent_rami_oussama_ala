@@ -29,27 +29,22 @@ const Rendezvous = ({ location }) => {
   const rendezvousReducer = useSelector(
     (state) => state.rendezvousReducer.rendezvous
   );
-  const edit = useSelector((state) => state.editReducer.edit);
   const dispatch = useDispatch();
   useEffect(() => {
-    edit
-      ? setuser(rendezvousReducer)
-      : setuser({
-          id_doc: docteur._id,
-          id_pat: Patient._id,
-          firstName_doc: docteur.firstName,
-          lastName_doc: docteur.lastName,
-          firstName_pat: Patient.firstName,
-          lastName_pat: Patient.lastName,
-          jour: "",
-          dateRen: "",
-          description: "",
-        });
+    setuser({
+      id_doc: docteur._id,
+      id_pat: Patient._id,
+      firstName_doc: docteur.firstName,
+      lastName_doc: docteur.lastName,
+      firstName_pat: Patient.firstName,
+      lastName_pat: Patient.lastName,
+      jour: "",
+      dateRen: "",
+      description: "",
+    });
   }, [rendezvousReducer]);
   const handeldata = () => {
-    edit
-      ? dispatch(editrendezvous(rendezvousReducer._id, user))
-      : dispatch(postrendezvous(user));
+    dispatch(postrendezvous(user));
   };
   const handelchange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
@@ -129,16 +124,7 @@ const Rendezvous = ({ location }) => {
               </option>
             </select>
           </Form.Field>
-          <h4 className="h2title">Description writing by doctor : </h4>
-          <Form.Field
-            readonly="readonly"
-            control={TextArea}
-            className="inputtext"
-            label="Description by doctor "
-            name="description"
-            value={user.description}
-            onChange={handelchange}
-          />
+
           <Button onClick={handeldata} className="btnfinal">
             <Link
               to={{
@@ -147,7 +133,7 @@ const Rendezvous = ({ location }) => {
                 state: { docteur: docteur },
               }}
             >
-              {edit ? "edit" : "save"}
+              save
             </Link>
           </Button>
         </div>

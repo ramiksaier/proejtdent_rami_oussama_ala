@@ -2,7 +2,6 @@ const adddrendezvous = async (req, res) => {
   try {
     const newrendezvous = new Rendezvous({ ...req.body });
     const doct = await Rendezvous.findOne({ dateRen: req.body.dateRen });
-    
 
     const response = await newrendezvous.save();
 
@@ -24,7 +23,7 @@ afficherendezvous = async (req, res) => {
 };
 afficheOnerendezvous = async (req, res) => {
   try {
-    const getone = await Rendezvous.find({ id_doc: req.params._id });
+    const getone = await Rendezvous.find({ _id: req.params._id });
     res
       .status(200)
       .send({ message: "this is the rendez vous you looking for", getone });

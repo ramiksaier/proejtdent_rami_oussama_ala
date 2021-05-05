@@ -4,10 +4,16 @@ import { getonerendezvous, getrendezvous } from "../REduxJS/ACTION/Rendezvous";
 import RendezvousCard from "./RendezvousCard";
 import Spiner from "./Spiner";
 import "./Rendezvouscard.css";
+import { Icon, Input } from "semantic-ui-react";
+
 import Navbar from "./Navbar";
 
 const ListRendezvous = ({ location, history }) => {
   const docteur = location.state.user;
+  const [inputSearch, setInputSearch] = useState("");
+  const [inputSearchbydate, setInputSearchbyplace] = useState("");
+  const [inputSearchbyjour, setInputSearchbyjour] = useState("");
+
   const dispatch = useDispatch();
   const rendezvous = useSelector(
     (state) => state.rendezvousReducer.listrendezvous
@@ -37,12 +43,41 @@ const ListRendezvous = ({ location, history }) => {
                 src="https://www.dentistespecialisepourenfant.com/fr/images/dentiste-pediatrique-prevention.png"
                 alt="imagedentiste"
               />
+              <div className="search">
+                <Input
+                  icon={<Icon name="search" inverted circular link />}
+                  placeholder="Search by name Patient..."
+                  onChange={(e) => setInputSearch(e.target.value)}
+                />
+                <Input
+                  icon={<Icon name="search" inverted circular link />}
+                  placeholder="Search by jour..."
+                  onChange={(e) => setInputSearchbyjour(e.target.value)}
+                />
+                <Input
+                  icon={<Icon name="crosshairs" inverted circular link />}
+                  placeholder="Search by Date Rendezvous..."
+                  onChange={(e) => setInputSearchbyplace(e.target.value)}
+                />{" "}
+              </div>
               <div className="row">
                 <div className="cardoc">
                   {!load ? (
-                    rendezvous.map((el) => (
-                      <RendezvousCard el={el} key={el._id} />
-                    ))
+                    rendezvous
+                      .filter(
+                        (rendezvous) =>
+                          rendezvous.firstName_pat
+                            .toUpperCase()
+                            .includes(inputSearch.toUpperCase()) &&
+                          rendezvous.dateRen
+                            .toUpperCase()
+                            .includes(inputSearchbydate.toUpperCase()) &&
+                          rendezvous.jour
+                            .toUpperCase()
+                            .includes(inputSearchbyjour.toUpperCase())
+                      )
+
+                      .map((el) => <RendezvousCard el={el} key={el._id} />)
                   ) : (
                     <Spiner />
                   )}{" "}

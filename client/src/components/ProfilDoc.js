@@ -36,7 +36,7 @@ const ProfilDoctor = () => {
             <div className="col-md-6">
               <div className="profile-head">
                 <h5 className=" h2title">
-                  {user.firstName}
+                  {user.firstName} <span> </span>
                   {user.lastName}
                 </h5>
                 <h6 className=" h2title">{user.qualification}</h6>

@@ -3,6 +3,7 @@ import {
   GETONE_RENDEZVOUS,
   GET_RENDEZVOUS,
   LOAD_RENDEZVOUS,
+  GET_ALLRENDEZVOUS,
 } from "../ACTIONTYPE/Rendezvous";
 
 import axios from "axios";
@@ -11,6 +12,15 @@ export const getrendezvous = (id) => async (dispatch) => {
   try {
     let result = await axios.get(`/api/rendezvous/docteur/${id}`);
     dispatch({ type: GET_RENDEZVOUS, payload: result.data });
+  } catch (error) {
+    dispatch({ type: FAIL_RENDEZVOUS, payload: error.response });
+  }
+};
+export const getallrendezvous = () => async (dispatch) => {
+  dispatch({ type: LOAD_RENDEZVOUS });
+  try {
+    let result = await axios.get("/api/rendezvous/");
+    dispatch({ type: GET_ALLRENDEZVOUS, payload: result.data });
   } catch (error) {
     dispatch({ type: FAIL_RENDEZVOUS, payload: error.response });
   }
@@ -49,7 +59,7 @@ export const postrendezvous = (newrendezvous) => async (dispatch) => {
 export const editrendezvous = (id, newrendezvous) => async (dispatch) => {
   try {
     await axios.put(`/api/rendezvous/${id}`, newrendezvous);
-    dispatch(getrendezvousbypatient(id));
+    dispatch(getallrendezvous());
   } catch (error) {
     dispatch({ type: FAIL_RENDEZVOUS, payload: error.response });
   }
@@ -57,7 +67,7 @@ export const editrendezvous = (id, newrendezvous) => async (dispatch) => {
 export const Deleterendezvous = (id) => async (dispatch) => {
   try {
     await axios.delete(`/api/rendezvous/${id}`);
-    dispatch(getrendezvous());
+    dispatch(getallrendezvous());
   } catch (error) {
     dispatch({ type: FAIL_RENDEZVOUS, payload: error.response });
   }

@@ -39,7 +39,6 @@ export const postpatient = (newUser, history) => async (dispatch) => {
     console.log(result.data);
     history.push("/detailPatient");
   } catch (error) {
-    // error.response.data.errors.map((el) => alert(el.msg));
     dispatch({ type: FAIL_PATIENT, payload: error.response.data.errors });
   }
 };

@@ -8,20 +8,7 @@ const ModalExampleModal = ({ el }) => {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
 
-  const [user, setuser] = useState({});
-
-  const rendezvousReducer = useSelector(
-    (state) => state.rendezvousReducer.user
-  );
-
-  useEffect(() => {
-    setuser(rendezvousReducer);
-  }, [rendezvousReducer]);
-  const handelchange = (e) => {
-    setuser({ ...user, [e.target.name]: e.target.value });
-  };
   const handeldata = () => {
-    dispatch(editrendezvous(rendezvousReducer._id, user));
     setOpen(false);
   };
   return (
@@ -29,26 +16,23 @@ const ModalExampleModal = ({ el }) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>ADD description</Button>}
+      trigger={
+        <Button basic color="blue">
+          description
+        </Button>
+      }
     >
-      <Modal.Header>Select a Photo</Modal.Header>
-      <Modal.Content image>
-        <Image
-          size="medium"
-          src="https://react.semantic-ui.com/images/avatar/large/rachel.png"
-          wrapped
-        />
-        <Modal.Description>
-          <Header>Default Profile Image</Header>
-          <input value={el.description} name="jour" onChange={handelchange} />
-        </Modal.Description>
+      <Modal.Header>
+        <h2 className=" h2title">Description</h2>
+      </Modal.Header>
+      <Modal.Content>
+        <Modal.Description></Modal.Description>
+        <h3 className=" h2title">{el.description}</h3>
       </Modal.Content>
       <Modal.Actions>
-        <Button color="black" onClick={() => setOpen(false)}>
-          Nope
-        </Button>
         <Button
-          content="Yep, that's me"
+          className=" h2title"
+          content="Yep, i untrestand"
           labelPosition="right"
           icon="checkmark"
           onClick={handeldata}

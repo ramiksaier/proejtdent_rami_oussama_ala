@@ -3,18 +3,22 @@ import {
   Deleterendezvous,
   editrendezvous,
   getonerendezvous,
+  getrendezvous,
+  getrendezvousbypatient,
 } from "../REduxJS/ACTION/Rendezvous";
 import { Link } from "react-router-dom";
 import Edit from "./Edit";
 import { toggle_edit } from "../REduxJS/ACTION/Edit";
 import React from "react";
 import { Button, Card, Image } from "semantic-ui-react";
+import { useSelector } from "react-redux";
 
 const RendezvousCard = ({ el, history }) => {
   const dispatch = useDispatch();
+  const rend = useSelector((state) => state.rendezvousReducer.user);
 
   return (
-    <div className="doct" >
+    <div className="doct">
       {" "}
       <Card.Group>
         <Card>
@@ -52,27 +56,38 @@ const RendezvousCard = ({ el, history }) => {
             <Card.Meta>
               <h4> jour : {el.jour}</h4>
             </Card.Meta>
-            <Card.Description>
-              <h2>{el.description}</h2>
-            </Card.Description>
           </Card.Content>
           <Card.Content extra>
             <div className="ui two buttons">
               {el.status ? (
-                <Button
-                  basic
-                  color="green"
-                  onClick={() => dispatch(Deleterendezvous(el._id))}
-                >
-                  delete
-                </Button>
+                <div>
+                  <Button
+                    basic
+                    color="green"
+                    onClick={() => dispatch(Deleterendezvous(el._id))}
+                  >
+                    delete
+                  </Button>
+                  <Link to={`/editrendezvoys/${el._id}`}>
+                    <Button
+                      className="bt"
+                      color="facebook"
+                      onClick={() => {
+                        dispatch(getonerendezvous(el._id));
+                        dispatch(toggle_edit());
+                      }}
+                    >
+                      Add Description
+                    </Button>
+                  </Link>
+                </div>
               ) : (
                 <>
                   <Button
                     basic
                     color="red"
                     onClick={() =>
-                      dispatch(editrendezvous(el._id, { status: true }))
+                      dispatch(editrendezvous(el._id, { ...el, status: true }))
                     }
                   >
                     confirmed
@@ -84,11 +99,20 @@ const RendezvousCard = ({ el, history }) => {
                   >
                     reject
                   </Button>
+                  <Link to={`/editrendezvoys/${el._id}`}>
+                    <Button
+                      className="bt"
+                      color="facebook"
+                      onClick={() => {
+                        dispatch(getonerendezvous(el._id));
+                        dispatch(toggle_edit());
+                      }}
+                    >
+                      Add Decription
+                    </Button>
+                  </Link>
                 </>
               )}
-              <Button>
-                <Edit el={el} />
-              </Button>
             </div>
           </Card.Content>
         </Card>

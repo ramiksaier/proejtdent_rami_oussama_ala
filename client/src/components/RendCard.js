@@ -5,8 +5,10 @@ import { toggle_edit } from "../REduxJS/ACTION/Edit";
 import {
   Deleterendezvous,
   getonerendezvous,
+  getrendezvous,
 } from "../REduxJS/ACTION/Rendezvous";
 import { Button, Card, Image } from "semantic-ui-react";
+import Edit from "./Edit";
 
 const RendCard = ({ el }) => {
   const dispatch = useDispatch();
@@ -40,15 +42,16 @@ const RendCard = ({ el }) => {
           <Card.Meta>
             <h2 className="h2title">{el.jour}</h2>
           </Card.Meta>
-          <Card.Description>
-            <h2 className="h2title">{el.description}</h2>
-          </Card.Description>
+
           <Button
             basic
-            color="green"
+            color="blue"
             onClick={() => dispatch(Deleterendezvous(el._id))}
           >
             delete
+          </Button>
+          <Button basic color="blue">
+            <Edit el={el} />
           </Button>
         </Card.Content>
       </Card>

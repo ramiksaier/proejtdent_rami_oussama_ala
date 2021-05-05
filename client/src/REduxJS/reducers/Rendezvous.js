@@ -3,6 +3,7 @@
 import {
   FAIL_RENDEZVOUS,
   GETONE_RENDEZVOUS,
+  GET_ALLRENDEZVOUS,
   GET_RENDEZVOUS,
   LOAD_RENDEZVOUS,
 } from "../ACTIONTYPE/Rendezvous";
@@ -22,6 +23,12 @@ const rendezvousReducer = (state = initialstate, { type, payload }) => {
       return { ...state, load: true };
     case GET_RENDEZVOUS:
       return { ...state, load: false, listrendezvous: payload.list };
+    case GET_ALLRENDEZVOUS:
+      return {
+        ...state,
+        load: false,
+        listrendezvous: payload.list,
+      };
 
     case FAIL_RENDEZVOUS:
       return { ...state, load: false, errors: payload };

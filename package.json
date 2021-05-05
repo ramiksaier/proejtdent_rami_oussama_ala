@@ -6,7 +6,8 @@
   "scripts": {
     "back": "nodemon server",
     "front": "cd client && npm start ",
-    "dev": "concurrently \"npm run back\" \"npm run front\""
+    "dev": "concurrently \"npm run back\" \"npm run front\"",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install cd client && npm run build cd client"
   },
   "author": "",
   "license": "ISC",
