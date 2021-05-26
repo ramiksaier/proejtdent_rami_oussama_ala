@@ -19,6 +19,7 @@ const Rendezvous = ({ location }) => {
 
   const [date, setDate] = useState();
   const inputProps = useDateInput({
+    
     date,
     format: "yyyy-MM-dd",
     locale: enGB,

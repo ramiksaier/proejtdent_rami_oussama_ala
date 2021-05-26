@@ -69,7 +69,7 @@ const AdminDoctcard = ({ el }) => {
             }
             className="btn btn-custom btn-lg page-scroll"
           >
-            COnfirm Doctor
+            {!el.status ? "confirm Docteur" : "deconfirm doctor"}
           </button>
         </div>
       </div>
